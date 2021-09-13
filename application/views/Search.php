@@ -30,7 +30,7 @@ $this->load->view('Left_top_bar');
             <span class="search_name">kiki</span> 的搜尋結果
         </div>
         <div class="search_many_cards_all">
-            <div class="search_many_cards">
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -83,8 +83,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -137,8 +137,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -191,8 +191,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -245,8 +245,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -299,8 +299,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -353,8 +353,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -407,8 +407,8 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="search_many_cards">
+            </a>
+            <a href="" class="search_many_cards">
                 <div class="search_many_cards_tb">
                     <div class="many_cards_t">
                         <div class="many_cards_t_div">
@@ -461,7 +461,7 @@ $this->load->view('Left_top_bar');
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

@@ -247,7 +247,7 @@ a {
     width: 100%;
     background-color: #FFFCFA;
     height: calc(100vh - 66px);
-    overflow: auto;
+    overflow: scroll;
 }
 
 .search_rightfunc {
@@ -267,7 +267,6 @@ a {
     width: 100%;
     background-color: transparent;
     height: calc(100vh - 66px);
-    overflow: auto;
 }
 
 .confirm_order_rightfunc {
@@ -639,6 +638,8 @@ a {
     border-radius: 30px;
     background-color: #FFED83;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
 .phoneloginpop {
@@ -1155,8 +1156,8 @@ a {
 }
 
 .cards_wrap {
-    width: 1000px;
-    max-width: 1000px;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     margin-bottom: 5%;
 }
@@ -1166,7 +1167,6 @@ a {
     box-shadow: 0 0.8px 4px rgb(0 0 0 / 35%);
     border-radius: 5px;
     cursor: pointer;
-    background-color: #fff;
 }
 
 .search_many_cards_tb {
@@ -1422,6 +1422,8 @@ a {
     min-width: 200px;
     max-width: 200px;
     flex-wrap: wrap;
+    background-color: #fff;
+    margin-right: 0;
     margin-bottom: 4%;
 }
 
@@ -1661,7 +1663,7 @@ a {
 .many_cards_all {
     display: flex;
     overflow: auto;
-    justify-content: space-between;
+    width: 1000px;
 }
 
 .search_many_cards_all {
@@ -1970,7 +1972,6 @@ a {
 .modelpop_top_div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .modelpop_top_list,
@@ -1983,6 +1984,7 @@ a {
     border-radius: 10px;
     cursor: pointer;
     width: 70px;
+    margin-right: 8px;
 }
 
 .modelpop_top_list_active {
@@ -2680,7 +2682,12 @@ a {
     border-radius: 10px;
     object-fit: contain;
 }
-
+.edit_div_spec {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
 .edit_div_7 {
     width: 400px;
 }
@@ -2775,6 +2782,7 @@ a {
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-right: 30px;
 }
 
 .edit_div_30 {
@@ -3642,7 +3650,7 @@ a {
     background: #fff;
     width: 400px;
     left: -375px;
-    top: -494px;
+    top: -482px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
     padding: 5px 10px;
@@ -3664,10 +3672,6 @@ a {
     padding: 10px 0px 0 20px;
     width: 500px;
     position: relative;
-}
-
-.dramic_91{
-    width: 30px;
 }
 
 .dramic_95 {
@@ -4092,8 +4096,8 @@ a {
 
 .person_39_active {
     color: #EBD852;
-    border-color: #EBD852;
-    background-color: #FFFBE1;
+        border-color: #EBD852;
+        background-color: #FFFBE1;
 }
 
 .person_40 {
@@ -4808,6 +4812,7 @@ a {
     padding: 15px 40px;
     background: #FFEC82;
     cursor: pointer;
+    border: none;
 }
 
 .many_bank {
@@ -4960,13 +4965,12 @@ a {
 .single_skill_6 {
     display: flex;
     align-items: center;
-    border: 1px solid #595959;
+    /* border: 1px solid #595959; */
     width: 200px;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 5px;
     position: relative;
-    cursor: pointer;
     margin-right: 30px;
 }
 
@@ -5031,7 +5035,7 @@ a {
 
 .editskill_49 {
     position: absolute;
-    right: 50px;
+    right: 0px;
     bottom: 40px;
     z-index: 1;
     color: #868686;
@@ -6106,6 +6110,10 @@ a {
     border-bottom: 1px solid #E2E2E1;
 }
 
+.grecaptcha-badge{
+	visibility: collapse !important;  
+}
+
 @media screen and (max-width: 768px) {
     .hot_skill {
         min-height: calc(100% - 166px);
@@ -6730,7 +6738,7 @@ a {
         background: #fff;
         width: 300px;
         left: -290px;
-        top: -390px;
+        top: -379px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
         padding: 5px 10px;

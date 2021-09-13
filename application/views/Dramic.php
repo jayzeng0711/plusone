@@ -1,28 +1,4 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/plusone88/assets/css/reset.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.theme.default.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-</head>
-
-<?php
-$this->load->view('Left_top_bar');
-?>
 <div class="balance_order_rightfunc">
     <div class="myorder_wrap">
         <div class="coupon_text" style="width: 1100px">
@@ -328,7 +304,7 @@ $this->load->view('Left_top_bar');
         </div>
     </div>
     <div class="dramic_50">
-        <textarea v-model="desc" class="dramic_51" name="" id="" col="30" maxlength="150" rows="5" placeholder="嗨 跟大家分享你的心情吧！"></textarea>
+        <textarea @input="descInput" v-model="desc" class="dramic_51" name="" id="" col="30" maxlength="150" rows="5" placeholder="嗨 跟大家分享你的心情吧！"></textarea>
     </div>
     <div class="dramic_61" v-if="list.length>0" v-cloak>
         <div v-for="(v,i) in list" :key="i" id="put_images_div_1" class="put_images_div">
@@ -554,7 +530,7 @@ $this->load->view('Left_top_bar');
                             <div class="dramic_96">
                                 <div class="dramic_97">
                                     <div class="dramic_105">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
+                                        <img style="width: 100%;" class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
                                     </div>
                                     <div class="dramic_98">0</div>
                                 </div>
@@ -703,7 +679,3 @@ $this->load->view('Left_top_bar');
 <div class="logoutmaskBg" v-show="presonmepop == 1" @click.stop="presonmessagepage(0)"></div>
 <div class="logoutmaskBg" v-show="messagepop == 1" @click="opmespop(2)"></div>
 
-
-<?php
-$this->load->view('Footer');
-?>

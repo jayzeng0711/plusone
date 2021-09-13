@@ -27,7 +27,7 @@ var vm = new Vue({
             gacoin: 1000,
             manycoin: 0,
             //是否是登入狀態
-            isLogin: true,
+            isLogin: false,
             loginpop: 0,
             logoutpopsta: 0,
             phoneloginpop: 0,
@@ -40,101 +40,8 @@ var vm = new Vue({
             reciprocal: 30,
             edit_status: 0,
             selectmodel: 0,
-            haveSkill: [
-                {
-                    "id": 2,
-                    'title': "傳說對決",
-                    "image": "Group 3@2x.png",
-                    "isSklii": true
-                },
-                {
-                    "id": 3,
-                    'title': "激鬥峽谷",
-                    "image": "Group 1@2x.png",
-                    "isSklii": true
-                },
-                {
-                    "id": 5,
-                    'title': "撩妹專區",
-                    "image": "icon-0@2x.png",
-                    "isSklii": true
-                },
-                {
-                    "id": 6,
-                    'title': "陪玩師服務",
-                    "image": "icon-12@2x.png",
-                    "isSklii": true
-                },
-            ],
-            all_games: [
-                [
-                    {
-                        "id": 1,
-                        'title': "英雄聯盟",
-                        "image": "Group 5@2x.png",
-                        "isSklii": false
-                    },
-                    {
-                        "id": 2,
-                        'title': "傳說對決",
-                        "image": "Group 3@2x.png",
-                        "isSklii": true
-                    },
-                    {
-                        "id": 3,
-                        'title': "激鬥峽谷",
-                        "image": "Group 1@2x.png",
-                        "isSklii": true
-                    },
-                ],
-                [
-                    {
-                        "id": 2,
-                        'title': "傳說對決",
-                        "image": "Group 3@2x.png",
-                        "isSklii": true
-                    },
-                    {
-                        "id": 3,
-                        'title': "激鬥峽谷",
-                        "image": "Group 1@2x.png",
-                        "isSklii": true
-                    },
-                ],
-                [
-                    {
-                        "id": 1,
-                        'title': "英雄聯盟",
-                        "image": "Group 5@2x.png",
-                        "isSklii": false
-                    },
-                ],
-                [
-
-                    {
-                        "id": 4,
-                        'title': "動物森友會",
-                        "image": "icon-12@2x.png",
-                        "isSklii": false
-                    },
-                ],
-                [
-                    {
-                        "id": 5,
-                        'title': "撩妹專區",
-                        "image": "icon-0@2x.png",
-                        "isSklii": true
-                    },
-                ],
-                [
-                    {
-                        "id": 6,
-                        'title': "陪玩師服務",
-                        "image": "icon-12@2x.png",
-                        "isSklii": true
-                    },
-                ],
-            ],
+            haveSkill: [],
+            all_games: [],
             ischecked: {
                 'ischecked': true,
                 'isfouce': false,
@@ -159,44 +66,25 @@ var vm = new Vue({
                 },
                 {
                     "id": 2,
-                    "name": "日本",
-                    "number": 244
+                    "name": "中國",
+                    "number": 86
                 },
                 {
                     "id": 3,
-                    "name": "加拿大",
-                    "number": 267
+                    "name": "香港",
+                    "number": 852
                 },
                 {
                     "id": 4,
                     "name": "新加坡",
-                    "number": 975
+                    "number": 65
                 },
                 {
                     "id": 5,
-                    "name": "南韓",
-                    "number": 847
-                },
-                {
-                    "id": 6,
-                    "name": "美國",
-                    "number": 943
-                },
-                {
-                    "id": 7,
                     "name": "馬來西亞",
-                    "number": 746
+                    "number": 60
                 },
-                {
-                    "id": 8,
-                    "name": "緬甸",
-                    "number": 987
-                },
-                {
-                    "id": 9,
-                    "name": "柬埔寨",
-                    "number": 621
-                },
+         
             ],
             // activity_lists: [
             //     {
@@ -237,52 +125,52 @@ var vm = new Vue({
             // ],
             activity_lists: [
                 {
-                    "link": "/plusone88/plusone/myorder",
+                    "link": "/plusone/myorder",
                     "img": "/plusone88/assets/img/icon-orderlist@2x.png",
                     "title": "我的約單",
                 },
                 {
-                    "link": "/plusone88/plusone/balance",
+                    "link": "/plusone/balance",
                     "img": "/plusone88/assets/img/icon-wallet@2x.png",
                     "title": "餘額",
                 },
                 {
-                    "link": "/plusone88/plusone/cancoupon",
+                    "link": "/plusone/cancoupon",
                     "img": "/plusone88/assets/img/icon-coupon@2x.png",
                     "title": "可用優惠券",
                 },
                 {
-                    "link": "/plusone88/plusone/settle",
+                    "link": "/member/settle",
                     "img": "/plusone88/assets/img/icon-apply@2x.png",
                     "title": "申請入駐",
                 },
                 {
-                    "link": "/plusone88/plusone/dataskill",
+                    "link": "/member/dataskill",
                     "img": "/plusone88/assets/img/icon-edit@2x.png",
                     "title": "資料及技能管理",
                 },
                 {
-                    "link": "/plusone88/plusone/report",
+                    "link": "/plusone/report",
                     "img": "/plusone88/assets/img/icon-report@2x.png",
                     "title": "收益報表",
                 },
                 {
-                    "link": "/plusone88/plusone/bankcard",
+                    "link": "/member/bankcard",
                     "img": "/plusone88/assets/img/bankcard@2x.png",
                     "title": "銀行卡設定",
                 },
                 {
-                    "link": "/plusone88/plusone/getmoney",
+                    "link": "/member/getmoney",
                     "img": "/plusone88/assets/img/icon-withdrawal@2x.png",
                     "title": "提款",
                 },
                 {
-                    "link": "/plusone88/plusone/account",
+                    "link": "/plusone/account",
                     "img": "/plusone88/assets/img/icon-setting@2x.png",
                     "title": "設置",
                 },
                 {
-                    "link": "yahoo.com.tw",
+                    "link": "https://www.plusone88.com/",
                     "img": "/plusone88/assets/img/icon-service@2x.png",
                     "title": "聯繫客服",
                 },
@@ -302,7 +190,7 @@ var vm = new Vue({
             all_sex: ["性別不限", "男生", "女生"],
             sex: "性別不限",
             sexNum: 0,
-            gametext: "英雄聯盟",
+            gametext: "",
             modeltext: "不限",
             ranktext: "不限",
             openprice: 0,
@@ -498,6 +386,13 @@ var vm = new Vue({
             bankcode: "",
             addbankpop: 0,
             moneey: 0,
+            first_money: 0,
+            coupon_1: "",
+            coupon_2: "",
+            coupon_3: "",
+            coupon_4: "",
+            coupon_5: "",
+            coupon_6: "",
             getmonet_error: 0,
             getmoneypas: "",
             moneyapply: 1,
@@ -545,20 +440,12 @@ var vm = new Vue({
             reduceprice: "滿10贈1",
             togeeditthisredu: 0,
             firstreducemoney: '10幣',
-            ranklevelte: "宗師",
+            ranklevelte: "白金",
+            levelId: 1,
             playeditredute: 0,
             editskillsattus: 0,
-            editskillimg: [
-                {
-                    "id": 1,
-                    "img": "/plusone88/assets/img/Group 195@2x.png",
-                },
-                {
-                    "id": 2,
-                    "img": "/plusone88/assets/img/Group 195@2x.png",
-                }
-            ],
-            editintrotext: "嗨 大家好久不見～",
+            editskillimg: [],
+            editintrotext: "",
             ordersmart: ["智能排序", "人氣優先", "新人優先", "低價優先", "高價優先"],
             ordertext: "智能排序",
             orderpop: 0,
@@ -574,17 +461,122 @@ var vm = new Vue({
             paymentconord: 0,
             odjdvalu: 1,
             rankrulepop: 0,
+            sinvideo: 0,
+            offset:1949,
+            oriallgames:[],
+            origameid: "",
+            origamepri: 0,
+            origamerank: 0,
         };
     },
     created() {
-
+        this.getSkill();
+        this.getAllSkill();
+        this.NologingetAllSkill();
+        this.getsingleskill();
+        this.getdataskill();
     },
+    
     computed: {
 
     },
     methods: {
         isLoginfun() {
             //登入api
+        },
+        async getSkill(){
+            return await $.post("https://www.plusone88.com/api/haveskill", {
+                    
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                vm.haveSkill = result;
+            })
+        },
+        async getAllSkill(){
+            return await $.post("https://www.plusone88.com/api/allgames", {
+                    
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                vm.all_games = result;
+            })
+        },
+        async NologingetAllSkill(){
+            return await $.post("https://www.plusone88.com/open/allgames", {
+                    
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                vm.oriallgames = result;
+                vm.origameid = vm.oriallgames[0]['id']
+                vm.gametext = vm.oriallgames[0]['skill_name']
+            })
+        },
+        async getsingleskill(){
+            var id = $('#skillId').val();
+            return await $.post("https://www.plusone88.com/api/editskillinfo", {
+                    "skillId":id
+            })
+            .done(function (result) {
+                console.log(result)
+                result = JSON.parse(result)
+                console.log(result)
+                vm.moneey = result['singleprice'];
+                vm.first_money = result['firstprice'];
+                vm.coupon_1 = result['coupon_1'];
+                vm.coupon_2 = result['coupon_2'];
+                vm.coupon_3 = result['coupon_3'];
+                vm.coupon_4 = result['coupon_4'];
+                vm.coupon_5 = result['coupon_5'];
+                vm.coupon_6 = result['coupon_6'];
+                vm.levelId = result['level'];
+                if(result['level'] == 1){
+                    vm.ranklevelte = "白金";
+                    $('#thislfirsrk_1').addClass('active');
+                }
+
+                if(result['level'] == 2){
+                    vm.ranklevelte = "翡翠";
+                    $('#thislfirsrk_2').addClass('active');
+                }
+
+                if(result['level'] == 3){
+                    vm.ranklevelte = "鑽石";
+                    $('#thislfirsrk_3').addClass('active');
+                }
+
+                vm.editskillimg = result['image'];
+                vm.editintrotext = result['intro'];
+                $('#player_1').attr('src',result['voice'])
+            })
+        },
+        async getdataskill(){
+            return await $.get("https://www.plusone88.com/api/getdataskill", {
+                xhrFields:{
+                    withCredentials:true
+                },
+                    
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                console.log(result)
+                vm.daypp = result['day'];
+                vm.yearpp = result['year'];
+                vm.introduce = result['intro'];
+                vm.monthpp = result['month'];
+                vm.user.name = result['name'];
+                if(result['sex'] == 0){
+                    vm.usersex = "男生";
+                }else{
+                    vm.usersex = "女生";
+                }
+                if(result['voice'] == ""){
+                    $('.dataskill').css('display','none');
+                }else{
+                    $('#player_1').attr('src',result['voice'])
+                }
+            })
         },
         openlogonpop() {
             this.loginpop = 1;
@@ -620,7 +612,7 @@ var vm = new Vue({
             if (this.codebtndiv['codebtndiv_get']) {
                 return false;
             }
-
+            
             var MobileReg = /^(09)[0-9]{8}$/;
             var phonenumber = (this.phonenumber.match(MobileReg)) ? true : false;
             if (this.phonenumber == "") {
@@ -632,14 +624,30 @@ var vm = new Vue({
                 $('.error_message').text('請輸入正確手機格式');
                 return false;
             }
-            if (this.phonenumber == '0912345678') {
-                $('.error_message').text('手機號碼已被綁定');
-                return false;
-            }
-            this.nogetcode = false;
-            this.codebtndiv['codebtndiv'] = false;
-            this.codebtndiv['codebtndiv_get'] = true;
-            this.setTimeoutFun();
+
+            $.post("https://www.plusone88.com/plusone/regsendsms", {
+                "phone": vm.phonenumber,
+                'areacode': vm.area_code,
+                "register": $('#recaptchaResponse').val()
+            })
+            .done(function (result) {
+                result = JSON.parse(result);
+                console.log(result['status'])
+                if(result['status']){
+                    vm.nogetcode = false;
+                    vm.codebtndiv['codebtndiv'] = false;
+                    vm.codebtndiv['codebtndiv_get'] = true;
+                    $('.error_message').text('驗證碼發送成功');
+                    grecaptcha.execute('6LcE2jAcAAAAAEmGIxGTRXM-3JZxxDtft5xLhc68', {action: 'register'}).then(function(token) {
+                        var recaptchaResponse = document.getElementById('recaptchaResponse');
+                        recaptchaResponse.value = token;
+                    });
+                    vm.setTimeoutFun();
+                }else{
+                    $('.error_message').text('驗證碼發送失敗');
+                    return false;
+                }
+            })
         },
         getcodechange() {
             this.nogetcode = false;
@@ -653,15 +661,19 @@ var vm = new Vue({
         //立即登入檢查驗證碼api
         rightnow_login() {
             //驗證碼錯誤的顯示狀態
-            this.opacity['opacity'] = true;
-            this.opacity['opacity_no'] = false;
-            $('.valid_code_div_input').css("color", "#D55E5C")
-            if (this.phonenumber == "") {
-                $('.error_message').text('請輸入手機號碼');
-                $('.bind_error').text('請綁定您的手機號碼');
+            
+            // if (this.phonenumber == "") {
+            //     $('.error_message').text('請輸入手機號碼');
+            //     $('.bind_error').text('請綁定您的手機號碼');
+            //     return false;
+            // }
+            if($('.valid_code_div_input').val() == ""){
+                this.opacity['opacity'] = true;
+                this.opacity['opacity_no'] = false;
+                $('.valid_code_div_input').css("color", "#D55E5C")
+                e.preventDefault();
                 return false;
             }
-
             //驗證碼通過的狀態
         },
         select_country(number) {
@@ -769,13 +781,22 @@ var vm = new Vue({
             this.logoutmaskBg = 0;
             this.isLogin = false;
             // 確定登出，跳轉回首頁
-            // window.location.href="";
+            window.location.href="https://www.plusone88.com/member/logout";
         },
         editaddgames() {
             this.edit_status = 1;
         },
         editfinal() {
-            this.edit_status = 0;
+            data = [];
+            for(i=0;i<vm.haveSkill.length;i++){
+                data.push(this.haveSkill[i]['id']);
+            }
+            $.post("https://www.plusone88.com/api/haveskill", {
+                    "haveskill": data
+            })
+            .done(function (result) {
+                vm.edit_status = 0;
+            })
         },
         top_none(id, title, image) {
 
@@ -809,10 +830,112 @@ var vm = new Vue({
                 }
             }
         },
+        edit_sklii_submit(e) {   
+            if (this.moneey == "" || this.moneey == 0) {
+                this.fakename = 1;
+                e.preventDefault();
+                return false;
+            }else{
+                this.fakename = 0;
+            }
+
+            if(this.coupon_1 == ""){
+                if(this.coupon_2 != ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }else{
+                if(this.coupon_2 == ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
+            if(this.coupon_3 == ""){
+                if(this.coupon_4 != ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }else{
+                if(this.coupon_4 == ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
+            if(this.coupon_5 == ""){
+                if(this.coupon_6 != ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }else{
+                if(this.coupon_6 == ""){
+                    this.realname = 1;
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
+            this.realname = 0;
+        },
+        check_coupon1() {
+            var coupon_1 = this.coupon_1;
+            coupon_1 = coupon_1.replace(/[^\d]/g, '');
+            if (coupon_1.indexOf('.') < 0 && coupon_1 != '') {
+                coupon_1 = parseInt(coupon_1);
+            }
+            this.coupon_1 = coupon_1;
+        },
+        check_coupon2() {
+            var coupon_2 = this.coupon_2;
+            coupon_2 = coupon_2.replace(/[^\d]/g, '');
+            if (coupon_2.indexOf('.') < 0 && coupon_2 != '') {
+                coupon_2 = parseInt(coupon_2);
+            }
+            this.coupon_2 = coupon_2;
+        },
+        check_coupon3() {
+            var coupon_3 = this.coupon_3;
+            coupon_3 = coupon_3.replace(/[^\d]/g, '');
+            if (coupon_3.indexOf('.') < 0 && coupon_3 != '') {
+                coupon_3 = parseInt(coupon_3);
+            }
+            this.coupon_3 = coupon_3;
+        },
+        check_coupon4() {
+            var coupon_4 = this.coupon_4;
+            coupon_4 = coupon_4.replace(/[^\d]/g, '');
+            if (coupon_4.indexOf('.') < 0 && coupon_4 != '') {
+                coupon_4 = parseInt(coupon_4);
+            }
+            this.coupon_4 = coupon_4;
+        },
+        check_coupon5() {
+            var coupon_5 = this.coupon_5;
+            coupon_5 = coupon_5.replace(/[^\d]/g, '');
+            if (coupon_5.indexOf('.') < 0 && coupon_5 != '') {
+                coupon_5 = parseInt(coupon_5);
+            }
+            this.coupon_5 = coupon_5;
+        },
+        check_coupon6() {
+            var coupon_6 = this.coupon_6;
+            coupon_6 = coupon_6.replace(/[^\d]/g, '');
+            if (coupon_6.indexOf('.') < 0 && coupon_6 != '') {
+                coupon_6 = parseInt(coupon_6);
+            }
+            this.coupon_6 = coupon_6;
+        },
         order_models() {
             this.selectmodel = 1;
         },
         changegame(num, title) {
+            this.origameid = num;
             $('.modelpop_top_list').removeClass('modelpop_top_list_active');
             $(`#modelpop_top_list_${num}`).addClass('modelpop_top_list_active');
             this.gametext = title;
@@ -826,6 +949,7 @@ var vm = new Vue({
             $('.modelpop_bottom_list').removeClass('modelpop_top_list_active');
             $(`#modelpop_bottom_list_${num}`).addClass('modelpop_top_list_active');
             this.ranktext = title;
+            this.origamerank = num - 1;
         },
         order_confirm() {
             this.selectmodel = 0;
@@ -835,6 +959,7 @@ var vm = new Vue({
             if (this.sexNum >= 3) {
                 this.sexNum = 0;
             }
+
             this.sex = this.all_sex[this.sexNum];
         },
         openPrices() {
@@ -846,9 +971,10 @@ var vm = new Vue({
                 }
             });
         },
-        thisPrices(text, num) {
+        thisPrices(text, num, total) {
             this.pricetext = text;
             this.openprice = 0;
+            this.origamepri = total;
             $('.preset').removeClass('active');
             $(`#preset_${num}`).addClass('active');
         },
@@ -965,53 +1091,78 @@ var vm = new Vue({
         },
         openinput(num) {
             $(`#input_image_${num}`).click();
-
-            image_size = 1024000;
-            $(`#input_image_${num}`).change(function () {
-                if (this.files[0].size > image_size) {
-                    alert('圖片不可超過1MB');
-                    $(`#input_image_${num}`).val('');
-                    return false;
-                }
-                const _this = this;
-                let _file = this.files[0];
-                let reader = new FileReader();
-                reader.readAsDataURL(_file);
-                reader.onload = function (e) {
-                    let image = new Image();
-                    image.src = this.result;
-                    image.onload = function () {
-                        let w = this.width;
-                        let h = this.height;
-                        if (w > 1920 || h > 1080) {
-                            alert('圖片尺寸不可超過1920*1080');
-                            $(`#input_image_${num}`).val('');
-                            $(`#head_image_${num}`).attr('src', "/plusone88/assets/img/icon-add@2x.png");
-                            return false;
-                        } else {
-                            $(`#head_image_${num}`).attr('src', e.target.result);
-                            $(`#head_image_${num}`).css('width', $(`#imagediv_${num}`).width());
-                            $(`#head_image_${num}`).css('height', $(`#imagediv_${num}`).height())
-                        }
+        },
+        changesinglepic(num,active){
+            var form = new FormData(document.getElementById(`upfile_${num}`));
+            form.append('id', num);
+            form.append('active', active);
+            $.ajax({
+                url: 'https://www.plusone88.com/api/modifydataskillimage',
+                type: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    if(data['status']){
+                        $(`#head_image_${num}`).attr({"src": data['imgurl'], "class": "edit_div_spec"});
+                        $(`#imgclose_${num}`).removeClass('voiceinput');
+                    }else{
+                        $(`#head_image_${num}`).attr('src',data['imgurl']);
+                        $(`#head_image_${num}`).removeClass('edit_div_spec');
+                        $(`#imgclose_${num}`).addClass('voiceinput');
                     }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus)
                 }
-            });
+            })
         },
         uploadvoice() {
             $('.voiceinput').click();
-            $('.voiceinput').change(function () {
-                const _this = this;
-                let _file = this.files[0];
-                let reader = new FileReader();
-                reader.readAsDataURL(_file);
-                reader.onload = function (e) {
-                    let image = new Image();
-                    image.src = this.result;
-                    image.onload = function () {
-
-                    }
+        },
+        uploadvoicech(){
+            var form = new FormData(document.getElementById(`voice`));
+            form.append('id', 1);
+            $.ajax({
+                url: 'https://www.plusone88.com/api/uploadvoice',
+                type: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    $('#sinplayer').attr('src',data['url']);
+                    vm.sinvideo = 1;
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus)
                 }
-            });
+            })
+        },
+        sinplayaudio(){
+            var player = document.getElementById(`sinplayer`);
+            if(player.paused){
+                player.play();
+            }else{
+                player.pause();
+            }
+            this.sinautoaudio();
+        },
+        sinautoaudio(){
+            (function(window, undefined) {
+                var player = document.getElementById(`sinplayer`),
+                //  map =  ['error','src','currentSrc','networkState','readyState','preload','buffered','played','seekable','seeking','currentTime','startTime','duration','paused','defaultPlaybackRate','playbackRate','ended','autoplay','loop','controls','volume','muted'];
+                 map =  ['currentTime','duration','paused','ended'];
+                 $(`#playersec`).text(Math.round(player['duration'])+"”");
+                 $(`#sincards_autio`).addClass('playaudio');
+                window.setInterval(function(){
+                    if(player['ended'] || player['paused']){
+                        $(`#sincards_autio`).removeClass('playaudio');
+                    }
+                }, 1000);
+
+            })(window);
         },
         editName(id) {
             this.edit_name = id;
@@ -1023,7 +1174,12 @@ var vm = new Vue({
             }
         },
         coneditName() {
-            this.edit_name = 0;
+            $.post("https://www.plusone88.com/api/getdataskill", {
+                    "name": vm.user.name
+            })
+            .done(function (result) {
+                vm.edit_name = 0;
+            })
         },
         openintro() {
             this.textarea = 1;
@@ -1034,15 +1190,44 @@ var vm = new Vue({
             this.introduce = this.textareatext;
         },
         confirmtext() {
-            this.textarea = 0;
-            this.textareatext = this.introduce;
+            $.post("https://www.plusone88.com/api/getdataskill", {
+                    "intro": vm.introduce
+            })
+            .done(function (result) {
+                vm.textarea = 0;
+                vm.textareatext = vm.introduce;
+            }) 
         },
         sexpop() {
             this.sexselectnum = 1;
         },
-        usersexconfirm(sex) {
-            this.usersex = sex;
-            this.sexselectnum = 0;
+        usersexconfirm(sex,id) {
+            $.post("https://www.plusone88.com/api/getdataskill", {
+                    "sex": id
+            })
+            .done(function (result) {
+                vm.usersex = sex;
+                vm.sexselectnum = 0;
+            }) 
+        },
+        uploadvoicechskill(){
+            var form = new FormData(document.getElementById(`voiceinput`));
+            form.append('id', 1);
+            $.ajax({
+                url: 'https://www.plusone88.com/api/uploadvoice',
+                type: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    $('#player_1').attr('src',data['url']);
+                    $('.dataskill').css('display','inline-flex');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus)
+                }
+            })
         },
         openyear(id) {
             if (id == 1) {
@@ -1104,7 +1289,14 @@ var vm = new Vue({
             }
         },
         confirmbir() {
-            this.editbitday = 0;
+            $.post("https://www.plusone88.com/api/getdataskill", {
+                "day" : this.daypp,
+                "year" : this.yearpp,
+                "month" : this.monthpp
+            })
+            .done(function (result) {
+                vm.editbitday = 0;
+            }) 
         },
         editbbb() {
             this.editbitday = 1;
@@ -1396,26 +1588,25 @@ var vm = new Vue({
         },
         imgupload() {
             $(`.settleform_24`).click();
-
-            image_size = 1024000;
-            $(`.settleform_24`).change(function () {
-                if (this.files[0].size > image_size) {
-                    alert('圖片不可超過1MB');
-                    $(`#input_image_${num}`).val('');
-                    return false;
+        },
+        imguploadch(){
+            var form = new FormData(document.getElementById(`settleform_24`));
+            form.append('id', 1);
+            $.ajax({
+                url: 'https://www.plusone88.com/api/changeavatar',
+                type: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    console.log(data)
+                    $('.settleform_21').attr('src',data['url']);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus)
                 }
-                const _this = this;
-                let _file = this.files[0];
-                let reader = new FileReader();
-                reader.readAsDataURL(_file);
-                reader.onload = function (e) {
-                    let image = new Image();
-                    image.src = this.result;
-                    image.onload = function () {
-                        $(`.settleform_21`).attr('src', e.target.result);
-                    }
-                }
-            });
+            })
         },
         editimgupload() {
             $(`.single_skill_14`).click();
@@ -1497,6 +1688,7 @@ var vm = new Vue({
         thislfirsrk(text, num) {
             this.ranklevelte = text;
             this.playeditredute = 0;
+            this.levelId = num;
             $('.thislfirsrk').removeClass('active');
             $(`#thislfirsrk_${num}`).addClass('active');
         },
@@ -1581,6 +1773,14 @@ var vm = new Vue({
             }
             this.moneey = moneey;
         },
+        check_firstmoney() {
+            var first_money = this.first_money;
+            first_money = first_money.replace(/[^\d]/g, '');
+            if (first_money.indexOf('.') < 0 && first_money != '') {
+                first_money = parseInt(first_money);
+            }
+            this.first_money = first_money;
+        },
         check_phone() {
             var license_num = this.phonenumber;
             license_num = license_num.replace(/[^\d]/g, '');
@@ -1589,17 +1789,22 @@ var vm = new Vue({
         introInput() {
             this.introducenum = this.settbleform[0]['introtext'].length;
         },
-        apply_settle() {
+        introInputEdit(){
+            this.introducenum = this.editintrotext.length;
+        },
+        apply_settle(e) {
             var vaild = this.settbleform[0];
             if (vaild['fakename'] == "") {
                 this.fakename = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.fakename = 0;
             }
-
+            
             if (vaild['sex'] == "") {
                 this.ssex = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.ssex = 0;
@@ -1607,6 +1812,7 @@ var vm = new Vue({
 
             if (vaild['name'] == "") {
                 this.realname = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.realname = 0;
@@ -1614,13 +1820,15 @@ var vm = new Vue({
 
             if (vaild['address'] == "") {
                 this.address = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.address = 0;
             }
-
+            /*
             if (vaild['playitemtext'] == "陪玩項目") {
                 this.selectplayitemsta = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.selectplayitemsta = 0;
@@ -1628,22 +1836,25 @@ var vm = new Vue({
 
             if (vaild['singleprice'] == 0) {
                 this.playpriceunit = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.playpriceunit = 0;
             }
-
+            
             //檢查綁定手機號碼是否成功
 
             if (vaild['timeunit'] == "") {
                 this.sunite = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.sunite = 0;
             }
-
+            */
             if (vaild['level'] == "") {
                 this.levelup = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.levelup = 0;
@@ -1651,19 +1862,18 @@ var vm = new Vue({
 
             if (vaild['agree'] == 0) {
                 this.agree_error = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.agree_error = 0;
             }
-            // ajax
-            window.location.href = "/plusone88/plusone/datacheck"
         },
         selecstore(id, money) {
             $('.store_4').removeClass('stroeactive');
             $('.checkstore').css('display', 'none');
             $(`#store_${id}`).addClass('stroeactive');
             $(`#check_${id}`).css('display', 'block');
-            this.storemoney = money;
+            this.storemoney = id;
         },
         selecbank(id, payment) {
             $('.store_10').removeClass('stroeactive');
@@ -1702,23 +1912,26 @@ var vm = new Vue({
                 $('.dramic_2').css('background', '#F3F3F3');
             }
         },
-        poststore() {
+        poststore(e) {
             if (this.storemoney == 0) {
                 this.money_error = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.money_error = 0;
             }
 
-            if (this.payment == "") {
-                this.pay_error = 1;
-                return false;
-            } else {
-                this.pay_error = 0;
-            }
+            // if (this.payment == "") {
+            //     this.pay_error = 1;
+            //     e.preventDefault();
+            //     return false;
+            // } else {
+            //     this.pay_error = 0;
+            // }
 
             if (this.usermail == "") {
                 this.email_error = 1;
+                e.preventDefault();
                 return false;
             } else {
                 this.email_error = 0;
@@ -1728,17 +1941,25 @@ var vm = new Vue({
             let str = this.usermail;
             if (!reg.test(str)) {
                 this.email_error = 1;
+                e.preventDefault();
                 return false;
             }
-
-            alert('儲值成功')
         },
         bankpopfun() {
             this.bankpop = 1;
         },
         bankfun(id) {
             if (id == 1) {
-                this.bankarr = [];
+                //this.bankarr = [];
+                $.post("https://www.plusone88.com/api/deletebank", {
+                'status': id,
+                })
+                .done(function (result) {
+                    result = JSON.parse(result);
+                    if(result['status']){
+                        window.location.reload();
+                    }
+                })
             }
             this.bankpop = 0;
         },
@@ -1758,14 +1979,14 @@ var vm = new Vue({
             } else {
                 $('.error_bank').text('')
             }
-
-            if (this.bankcode == "" || this.bankcode.length != 16) {
+           
+            if (this.bankcode == "" /*|| this.bankcode.length != 16*/) {
                 $('.error_bank_acc').text('請輸入完整銀行帳號');
                 return false;
             } else {
                 $('.error_bank_acc').text('')
             }
-
+            
             if (this.phonenumber == "") {
                 $('.error_message').text('請輸入手機號碼');
             }
@@ -1830,16 +2051,20 @@ var vm = new Vue({
         linkhome() {
             window.location.href = "/plusone88/plusone"
         },
-        circleconfirmd(id) {
-            id = id - 1;
-            if (this.manyskill[id]['open'] == 0) {
-                this.manyskill[id]['open'] = 1;
-            } else {
-                this.manyskill[id]['open'] = 0;
-            }
+        circleconfirmd(id,status) {
+            $.post("https://www.plusone88.com/api/skillstatusmodify", {
+                'skill_id': id,
+                'status': status,
+            })
+            .done(function (result) {
+                result = JSON.parse(result);
+                if(result['status']){
+                    window.location.reload();
+                }
+            })
         },
         editskill(id) {
-            window.location.href = "/plusone88/plusone/editskill"
+            window.location.href = "/member/editskill/"+id
         },
         deletesinimg(id) {
             this.editskillimg.splice(id - 1, 1)

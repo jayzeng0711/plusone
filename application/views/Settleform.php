@@ -1,34 +1,9 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/plusone88/assets/css/reset.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.theme.default.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-    <style>
-        .ham,
-        .leftfunc {
-            display: none;
-        }
-    </style>
-</head>
-
-<?php
-$this->load->view('Left_top_bar');
-?>
+<!--script>
+    $(document).ready(function(){
+        $('.ham,.leftfunc ').css('display','none');
+    })
+</script-->
 <div class="balance_order_rightfunc" style="width: 100%;">
     <div class="settleform_1">
         <div class="settleform_2">
@@ -45,7 +20,14 @@ $this->load->view('Left_top_bar');
             </div>
         </div>
     </div>
-    <form action="" method="">
+    <form id="voice">
+        <input type="file" name="file" accept=".mp3,.mp4,.wma,.m4a,.wav,.ape,.flac,.aac" class="voiceinput" @change="uploadvoicech()">
+    </form>
+    <form id="settleform_24">
+        <input class="settleform_24" name="file" type="file" style="display:none" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp" @change="imguploadch()">
+    </form>
+    <?=form_open_multipart('api/joinplaywith', array('@submit' => 'apply_settle'));?>
+
         <div class="settleform_9">
             <div class="settleform_10"><span class="settleform_14">歡迎申請入駐陪玩，以下只需要簡單的幾個步驟就可以完成囉！</span></div>
             <div class="settleform_11">
@@ -57,11 +39,11 @@ $this->load->view('Left_top_bar');
                     <div class="settleform_18">
                         <div class="settleform_19">
                             <div class="settleform_20">
-                                <img class="settleform_21" src="/plusone88/assets/img/img-profile@2x.png" alt="">
+                                <img class="settleform_21" src="<?=$this->member_model->islogin()->picture?>" alt="">
                             </div>
                             <div class="settleform_22">
                                 <div class="settleform_23" @click="imgupload()">上傳頭像</div>
-                                <input class="settleform_24" type="file" style="display:none">
+                                
                             </div>
                             <div class="settleform_25">
                                 請務必上傳個人清晰易識別<br>
@@ -73,10 +55,10 @@ $this->load->view('Left_top_bar');
                     <div class="settleform_26">
                         <div class="settleform_27">
                             <div class="settleform_28">
-                                <div class="settleform_29">名稱</div>
+                                <div class="settleform_29">暱稱</div>
                                 <div class="settleform_32">
                                     <div class="settleform_30">
-                                        <input class="settleform_31" type="text" placeholder="請輸入名稱" v-model="settbleform[0]['fakename']">
+                                        <input class="settleform_31" type="text" placeholder="請輸入名稱" name='fakename' placeholder="<?=$this->member_model->getUser()->fakename?>" v-model="settbleform[0]['fakename']">
                                     </div>
                                     <div class="settleform_34" v-show="fakename == 1">請填寫名稱</div>
                                 </div>
@@ -86,10 +68,10 @@ $this->load->view('Left_top_bar');
                                 <div class="settleform_32">
                                     <div style="margin-bottom: 5px;">
                                         <label for="male" class="settleform_33">
-                                            <input type="radio" id="male" name="sex" value="男" v-model="settbleform[0]['sex']"> <span>男</span>
+                                            <input type="radio" id="male" name="sex" value="1" v-model="settbleform[0]['sex']"> <span>男</span>
                                         </label>
                                         <label for="female">
-                                            <input type="radio" id="female" name="sex" value="女" v-model="settbleform[0]['sex']"> <span>女</span>
+                                            <input type="radio" id="female" name="sex" value="2" v-model="settbleform[0]['sex']"> <span>女</span>
                                         </label>
                                     </div>
                                     <div class="settleform_34" v-show="ssex == 1">請選擇您的性別</div>
@@ -99,7 +81,7 @@ $this->load->view('Left_top_bar');
                                 <div class="settleform_29">真實姓名</div>
                                 <div class="settleform_32">
                                     <div class="settleform_30">
-                                        <input class="settleform_31" type="text" placeholder="請填寫您的真實姓名" v-model="settbleform[0]['name']">
+                                        <input class="settleform_31" type="text" placeholder="請填寫您的真實姓名" name='name' placeholder="<?=$this->member_model->getUser()->name?>" v-model="settbleform[0]['name']">
                                     </div>
                                     <div class="settleform_34" v-show="realname == 1">請填寫您的真實姓名</div>
                                 </div>
@@ -108,7 +90,7 @@ $this->load->view('Left_top_bar');
                                 <div class="settleform_29">地址</div>
                                 <div class="settleform_32">
                                     <div class="settleform_30add">
-                                        <input class="settleform_31add" type="text" placeholder="請填寫您的地址" v-model="settbleform[0]['address']">
+                                        <input class="settleform_31add" type="text" placeholder="請填寫您的地址" name='address' v-model="settbleform[0]['address']">
                                     </div>
                                     <div class="settleform_34" v-show="address == 1">請填寫您的地址</div>
                                 </div>
@@ -117,7 +99,7 @@ $this->load->view('Left_top_bar');
                     </div>
                 </div>
             </div>
-            <div class="settleform_11">
+            <!--div class="settleform_11">
                 <div class="settleform_12"><span class="settleform_13">申請陪玩項目資訊</span></div>
                 <div class="settleform_15">
                     <hr class="settleform_16">
@@ -139,7 +121,7 @@ $this->load->view('Left_top_bar');
                                 <div class="prices_list" @click.stop="thisGames('激鬥峽谷',1)">
                                     激鬥峽谷
                                     <img id="preset_1" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                                </div>
+                                </div>１００
                                 <div class="prices_list" @click.stop="thisGames('天黑請閉眼',2)">
                                     天黑請閉眼
                                     <img id="preset_2" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
@@ -177,7 +159,8 @@ $this->load->view('Left_top_bar');
                         <div class="settleform_34" v-show="sunite == 1">請選擇單位</div>
                     </div>
                 </div>
-            </div>
+            </div-->
+            <!--
             <div class="settleform_11">
                 <div class="settleform_12"><span class="settleform_13">自我介紹</span></div>
                 <div class="settleform_15">
@@ -189,14 +172,17 @@ $this->load->view('Left_top_bar');
                     <div style="color: #F6C3C5;font-size: 12px">例如：你好，我是KIKI，能帶給您每一場都開心又歡樂，喜歡我的話就快找我下單吧！</div>
                 </div>
             </div>
+            
             <div class="settleform_11">
                 <div class="settleform_12"><span class="settleform_13">語音介紹</span></div>
                 <div class="settleform_15">
                     <hr class="settleform_16">
                 </div>
+                
                 <div style="padding: 20px">
-                    <div class="edit_div_27" @click="uploadvoice()" style="    border: 1px solid #4E9ECB;display:inline-flex;padding: 10px 30px;border-radius: 20px;margin-bottom: 20px">
-                        <input type="file" name="file" accept=".mp3,.wma,.m4a,.wav,.ape,.flac,.aac" class="voiceinput">
+                   
+                    <? if (is_null($this->member_model->getUser()->voice)): ?>
+                    <div class="edit_div_27" @click="uploadvoice()" style="border: 1px solid #4E9ECB;display:inline-flex;padding: 10px 30px;border-radius: 20px;margin-bottom: 20px">
                         <div class="edit_div_28">
                             <img class="edit_div_29" src="/plusone88/assets/img/icon-uploadcloud@2x.png" alt="">
                         </div>
@@ -204,10 +190,47 @@ $this->load->view('Left_top_bar');
                             上傳音訊檔
                         </div>
                     </div>
+                    <div v-show="sinvideo == 1" class="many_cards_autio" id="sincards_autio" @click.stop.prevent="sinplayaudio()" style="position: initial;display: inline-flex;margin-bottom: 20px;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p class="many_cards_autio_second" id="playersec">10”</p>
+                        <audio id="sinplayer" preload="preload" src="<?=$this->member_model->getUser()->voice?>"></audio>
+                    </div>
+                   
+                    <?php else: ?>
+                   
+                    <div class="edit_div_27" @click="uploadvoice()" style="border: 1px solid #4E9ECB;display:inline-flex;padding: 10px 30px;border-radius: 20px;margin-bottom: 20px">
+                        <div class="edit_div_28">
+                            <img class="edit_div_29" src="/plusone88/assets/img/icon-uploadcloud@2x.png" alt="">
+                        </div>
+                        <div class="edit_div_30">
+                            上傳音訊檔
+                        </div>
+                    </div>
+                    <div class="many_cards_autio" id="sincards_autio" @click.stop.prevent="sinplayaudio()" style="position: initial;display: inline-flex;margin-bottom: 20px;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p class="many_cards_autio_second" id="playersec">10”</p>
+                        <audio id="sinplayer" preload="preload" src="<?=$this->member_model->getUser()->voice?>"></audio>
+                    </div>
+                   
+                    <?php endif; ?>
                     <div style="font-size:12px;color:#B4B4B4;margin-bottom: 10px">上傳的錄音將提供給用户試聽。請上傳3-60秒的錄音(支持mp3/wma/m4a，檔案大小不超過3M)</div>
                     <div style="color: #F6C3C5;font-size: 12px">例如：你好，我是KIKI，能帶給您每一場都開心又歡樂，喜歡我的話就快找我下單吧！</div>
                 </div>
+               
             </div>
+             -->
             <div class="settleform_11">
                 <div class="settleform_12"><span class="settleform_13">綁定手機號碼</span></div>
                 <div class="settleform_15">
@@ -308,7 +331,7 @@ $this->load->view('Left_top_bar');
                 提交前請閱讀並同意
             </div>
             <div class="settleform_60">
-                <button type="button" class="settleform_61" @click="apply_settle()">提交入駐申請</button>
+                <button type="submit" class="settleform_61" >提交入駐申請</button>
             </div>
         </div>
     </form>
@@ -319,6 +342,3 @@ $this->load->view('Left_top_bar');
         <div class="bottom_note"><a href="/plusone88/plusone/privice">協議與條款</a></div>
     </div>
 </div>
-<?php
-$this->load->view('Footer');
-?>

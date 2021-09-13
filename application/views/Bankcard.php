@@ -1,28 +1,4 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/plusone88/assets/css/reset.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.theme.default.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-</head>
-
-<?php
-$this->load->view('Left_top_bar');
-?>
 <div class="balance_order_rightfunc">
     <div class="myorder_wrap_balance">
         銀行卡設定
@@ -31,9 +7,14 @@ $this->load->view('Left_top_bar');
         <div class="balance_wrap_inner" v-if="bankarr.length > 0">
             <div class="balance_wrap_bot">
                 <div class="balance_wrap_bot_one" style="flex: inherit;margin-right: 40px;"><img src="/plusone88/assets/img/icon-visacard@2x.png" alt=""></div>
-                <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;">{{ bankarr[0] }}</div>
-                <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;">{{ bankarr[1] }}</div>
+                <?if($member_bank):?>
+                <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;"><?=$banklist[$member_bank['bank_code']]?></div>
+                <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;"><?=$member_bank['bank_account']?></div>
                 <div class="balance_wrap_bot_four" style="margin-left:auto;" @click="bankpopfun()">刪除</div>
+                <?else:?>
+                    <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;">無</div>
+                <?endif;?>
+                
             </div>
         </div>
         <div class="balance_wrap_inner" style="margin-bottom: 20px;">
@@ -63,7 +44,8 @@ $this->load->view('Left_top_bar');
     <div class="close" @click="addbankcard(0)">
         <i class="fas fa-times"></i>
     </div>
-    <form method="" action="">
+    
+    <?=form_open('api/addbank', array('@submit' => 'bankvaild'));?>
         <div class="login-content">
             <div class="login_content_text">
                 新增銀行卡
@@ -74,25 +56,16 @@ $this->load->view('Left_top_bar');
                         <img class="edit_div_50" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                     </div>
                     <div class="login_body_div">
-                        <input class="login_body_div_input" value="" v-model="whichbank" placeholder="請選擇綁定銀行" readonly>
+                        <input class="login_body_div_input" name='bank_code' value="" v-model="whichbank" placeholder="請選擇綁定銀行" readonly>
                     </div>
                     <div class="many_bank" v-show="openbank == 1">
-                        <div class="prices_list" @click.stop="thisbanks('812 台新銀行',0)">
-                            812 台新銀行
-                            <img id="preset_0" class="preset active" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
+                        <? foreach ($banklist as $key => $list):?>
+                        <div class="prices_list" @click.stop="thisbanks('<?=$key?>-<?=$list?>',0)">
+                            <?=$key?>-<?=$list?>
+                            <img id="preset_0" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
                         </div>
-                        <div class="prices_list" @click.stop="thisbanks('822 中國信託',1)">
-                            822 中國信託
-                            <img id="preset_1" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
-                        <div class="prices_list" @click.stop="thisbanks('700 郵局',2)">
-                            700 郵局
-                            <img id="preset_2" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
-                        <div class="prices_list" @click.stop="thisbanks('803 聯邦銀行',3)">
-                            803 聯邦銀行
-                            <img id="preset_3" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
+                        <?php endforeach;?>
+                        
                     </div>
                 </div>
             </div>
@@ -100,7 +73,7 @@ $this->load->view('Left_top_bar');
             <div class="login_body" style="padding: 0;">
                 <div class="mobileinput" style="padding: 0 10px;position: relative;">
                     <div class="login_body_div">
-                        <input class="login_body_div_input" value="" style="width: 250px;" v-model="bankcode" @input="check_bankcode()" maxlength="19" placeholder="請輸入完整銀行帳號">
+                        <input class="login_body_div_input" name='bank_account' value="" style="width: 250px;" v-model="bankcode" @input="check_bankcode()" maxlength="19" placeholder="請輸入完整銀行帳號">
                     </div>
                 </div>
             </div>
@@ -126,7 +99,7 @@ $this->load->view('Left_top_bar');
             <div class="error_message"></div>
             <div class="valid_code">
                 <div class="valid_code_div">
-                    <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()">
+                    <input class="valid_code_div_input" type="text"  name='bank_account'  placeholder="請輸入驗證碼" @click="code_confirm()">
                 </div>
                 <div :class="codebtndiv" @click.prevent="getcode()">
                     <button type="button">
@@ -136,7 +109,7 @@ $this->load->view('Left_top_bar');
                 </div>
             </div>
             <div class="code_error" :class="opacity">認證碼輸入錯誤</div>
-            <button class="rightnow_login" @click.prevent="bankvaild()">
+            <button class="rightnow_login">
                 確認送出
             </button>
         </div>
@@ -144,6 +117,3 @@ $this->load->view('Left_top_bar');
 </div>
 <div class="logoutmaskBg" v-show="bankpop == 1" @click="bankfun(0)"></div>
 <div class="logoutmaskBg" v-show="addbankpop == 1" @click="addbankcard(0)"></div>
-<?php
-$this->load->view('Footer');
-?>

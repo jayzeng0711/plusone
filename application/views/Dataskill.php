@@ -1,28 +1,4 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/plusone88/assets/css/reset.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/plusone88/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="https://www.setn.com/resources/OwlCarousel2-2.3.4/assets/owl.theme.default.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-</head>
-
-<?php
-$this->load->view('Left_top_bar');
-?>
 <div class="confirm_order_rightfunc">
     <div class="myorder_wrap">
         <div class="editdata_text">
@@ -36,12 +12,23 @@ $this->load->view('Left_top_bar');
             <div class="edit_div_1">
                 <div class="edit_div_2">
                     <div class="edit_div_3">我的相簿</div>
+                    
                     <div class="edit_div_4">
-                        <div class="edit_div_5" :id="'imagediv_'+i" v-for="(input, i) in inputtimes" @click="openinput(i)">
-                            <input type="file" name="file" :id="'input_image_'+i" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp">
-                            <img class="edit_div_6" :id="'head_image_'+i" src="/plusone88/assets/img/icon-add@2x.png" alt="">
+                        
+                        <?php foreach ($userImage as $image): ?>
+                        <form id="upfile_<?=$image['id']?>">
+                        <div class="edit_div_5" id="imagediv_<?=$image['id']?>"  @click.stop="openinput(<?=$image['id']?>)" style="position: relative">
+                            <input type="file" name="file" id="input_image_<?=$image['id']?>" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp" @change="changesinglepic(<?=$image['id']?>,0)">
+                            <img class="edit_div_6 <?if($image['status']== 0){echo 'edit_div_spec';}?>" id="head_image_<?=$image['id']?>" src="<?=$image['pic_url']?>" alt="">
+                            <div id='imgclose_<?=$image['id']?>' class="imgclose <?if($image['status']== 1){echo 'voiceinput';}?>" @click.stop="changesinglepic(<?=$image['id']?>,1)">
+                                <i class="fas fa-times"></i>
+                            </div>
                         </div>
+                        </form>
+                        <?php endforeach; ?>
+                        
                     </div>
+                    
                 </div>
                 <div class="edit_div_7">
                     <div class="edit_div_8">
@@ -55,10 +42,10 @@ $this->load->view('Left_top_bar');
                         </div>
                         <div class="edit_div_13">
                             <div class="edit_div_14" v-if="edit_name == 0">
-                                {{ user.name }}
+                            {{ user.name }}
                             </div>
                             <div class="edit_div_15" v-else>
-                                <input class="edit_div_16" type="text" maxlength="10" v-model="user.name">
+                                <input class="edit_div_16" type="text"  maxlength="10" v-model="user.name">
                             </div>
                             <div class="edit_div_17" v-show="edit_name == 1">
                                 <div class="edit_div_18" @click="editName(0)">
@@ -69,23 +56,25 @@ $this->load->view('Left_top_bar');
                                 </div>
                             </div>
                         </div>
-                        <div class="edit_div_20">
+                        <div class="edit_div_20" style="margin-bottom: 20px">
                             語音介紹
                         </div>
-                        <div class="edit_div_21">
-                            <div class="edit_div_22">
-                                <div class="edit_div_23">
-                                    <img class="edit_div_24" src="/plusone88/assets/img/icon-record@2x.png" alt="">
-                                </div>
-                                <div class="edit_div_25">
-                                    點擊開始錄音
-                                </div>
-                            </div>
-                            <div class="edit_div_26">
-                                或
+                        <div class="edit_div_21" style="justify-content: initial;">
+                            <div class="many_cards_autio dataskill" id="cards_autio_1" style="align-items: center;display: inline-flex;position: initial;margin-right: 20px;" @click.stop.prevent="playaudio(1)">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p class="many_cards_autio_second" id="playersec_1">10”</p>
+                                <audio id="player_1" preload="preload" src=""></audio>
                             </div>
                             <div class="edit_div_27" @click="uploadvoice()">
-                                <input type="file" name="file" accept=".mp3,.wma,.m4a,.wav,.ape,.flac,.aac" class="voiceinput">
+                                <form action="" id="voiceinput">
+                                    <input type="file" name="file" accept=".mp3,.wma,.m4a,.wav,.ape,.flac,.aac" class="voiceinput" @change="uploadvoicechskill()">
+                                </form>
                                 <div class="edit_div_28">
                                     <img class="edit_div_29" src="/plusone88/assets/img/icon-uploadcloud@2x.png" alt="">
                                 </div>
@@ -154,17 +143,8 @@ $this->load->view('Left_top_bar');
                                 <img class="edit_div_50" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                             </div>
                             <div class="birthday_option" v-show="biryear == 1 && birmon == 0 && bir_day == 0">
-                                <div class="prices_list" @click.stop="dotyear('2003')">
-                                    2003
-                                </div>
-                                <div class="prices_list" @click.stop="dotyear('2004')">
-                                    2004
-                                </div>
-                                <div class="prices_list" @click.stop="dotyear('2005')">
-                                    2005
-                                </div>
-                                <div class="prices_list" @click.stop="dotyear('2006')">
-                                    2006
+                                <div class="prices_list" @click.stop="dotyear(n + offset)" v-for="n in 72">
+                                    {{ n + offset }}
                                 </div>
                             </div>
                         </div>
@@ -176,17 +156,8 @@ $this->load->view('Left_top_bar');
                                 <img class="edit_div_50" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                             </div>
                             <div class="birthday_option" v-show="birmon == 1 && biryear == 0 && bir_day == 0">
-                                <div class="prices_list" @click.stop="dotmonth('1')">
-                                    1
-                                </div>
-                                <div class="prices_list" @click.stop="dotmonth('2')">
-                                    2
-                                </div>
-                                <div class="prices_list" @click.stop="dotmonth('3')">
-                                    3
-                                </div>
-                                <div class="prices_list" @click.stop="dotmonth('4')">
-                                    4
+                                <div class="prices_list" @click.stop="dotmonth(n)" v-for="n in 12">
+                                    {{ n }}
                                 </div>
                             </div>
                         </div>
@@ -198,17 +169,8 @@ $this->load->view('Left_top_bar');
                                 <img class="edit_div_50" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                             </div>
                             <div class="birthday_option" v-show="bir_day == 1 && biryear == 0 && birmon == 0">
-                                <div class="prices_list" @click.stop="dotday('1')">
-                                    1
-                                </div>
-                                <div class="prices_list" @click.stop="dotday('2')">
-                                    2
-                                </div>
-                                <div class="prices_list" @click.stop="dotday('3')">
-                                    3
-                                </div>
-                                <div class="prices_list" @click.stop="dotday('4')">
-                                    4
+                                <div class="prices_list" @click.stop="dotday(n)" v-for="n in 31">
+                                    {{ n }}
                                 </div>
                             </div>
                         </div>
@@ -229,28 +191,41 @@ $this->load->view('Left_top_bar');
         </div>
 
         <div v-show="dataskill == 2">
+       
             <div class="dataslik_1">
-                <div class="dataslik_2">
-                    <img class="dataslik_3" src="/plusone88/assets/img/icon-addblue@2x.png" alt="">
-                    <div class="dataslik_4">添加新技能</div>
-                </div>
-                <div class="dataslik_5" v-for="(list,i) in manyskill" @click.stop="editskill(list.id)">
-                    <div class="dataslik_6"><img class="dataslik_7" :src="'/plusone88/assets/img/'+list.img" alt=""></div>
+                <a href="<?=base_url()?>member/skill">
+                    <div class="dataslik_2">
+                        <img class="dataslik_3" src="/plusone88/assets/img/icon-addblue@2x.png" alt="">
+                        <div class="dataslik_4">添加新技能</div>
+                    </div>
+                </a>
+                 <?php foreach ($getAllSkill as $skill): ?>
+                <div class="dataslik_5"  @click.stop="editskill(<?=$skill['id']?>)">
+                    <div class="dataslik_6"><img class="dataslik_7" src="<?=$getSkillType[$skill['skill_type']]['pic']?>" alt=""></div>
                     <div class="dataslik_8">
-                        <div class="dataslik_9">{{ list.name }}</div>
-                        <div class="dataslik_10">180幣/局</div>
-                        <div class="dataslik_11">接單中</div>
+                        <div class="dataslik_9"><?=$getSkillType[$skill['skill_type']]['skill_name']?></div>
+                        <div class="dataslik_10"><?=$skill['amount']?> 幣 / <?=$skill['time']?> 分鐘</div>
+                        <div class="dataslik_11"><?if ($skill['is_open'] == 1):?>接單中<?php else: ?> 未接單 <?php endif; ?></div>
                     </div>
                     <div class="dataslik_12">
-                        <div v-if="list.open == 1" :id="'skill_'+list.id" class="openorclose_1 switch_wrap" @click="circleconfirmd(list.id)">
+                        <? if($skill['is_open'] == 1):?>
+
+                        <div id="skill_<?=$skill['id'] ?>" class="openorclose_1 switch_wrap" @click.stop="circleconfirmd('<?=$skill['id'] ?>',0)">
                             <div class="circle_1 switch"></div>
                         </div>
-                        <div v-else class="openorclose switch_wrap" @click.stop="circleconfirmd(list.id)">
+
+                        <?php else: ?>
+
+                        <div class="openorclose switch_wrap" @click.stop="circleconfirmd('<?=$skill['id'] ?>',1)">
                             <div class="circle switch"></div>
                         </div>
+
+                        <?php endif; ?>
                     </div>
                 </div>
+                 <?php endforeach; ?>
             </div>
+       
         </div>
     </div>
 </div>
@@ -260,7 +235,7 @@ $this->load->view('Left_top_bar');
         您是？
     </div>
     <div class="logoutpop_div_wrap">
-        <div class="edit_div_41" @click="usersexconfirm('男生')">
+        <div class="edit_div_41" @click="usersexconfirm('男生',1)">
             <div class="edit_div_42">
                 <img class="edit_div_43" src="/plusone88/assets/img/icon-male@2x.png" alt="">
             </div>
@@ -268,7 +243,7 @@ $this->load->view('Left_top_bar');
                 男生
             </div>
         </div>
-        <div class="edit_div_41" @click="usersexconfirm('女生')">
+        <div class="edit_div_41" @click="usersexconfirm('女生',2)">
             <div class="edit_div_42">
                 <img class="edit_div_43" src="/plusone88/assets/img/icon-female@2x.png" alt="">
             </div>
@@ -279,6 +254,3 @@ $this->load->view('Left_top_bar');
     </div>
 </div>
 <div class="logoutmaskBg" v-show="sexselectnum == 1"></div>
-<?php
-$this->load->view('Footer');
-?>
