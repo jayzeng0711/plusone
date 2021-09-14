@@ -148,7 +148,7 @@
                 <div class="hot_skill">
                     <div class="items">
                         <a href="<?=base_url()?>">
-                            <div class="item ">
+                            <div class="item">
                                 <div class="itemimg">
                                     <img src="<?=base_url()?>plusone88/assets/img/icon-home@2x.png">
                                 </div>
@@ -158,7 +158,7 @@
                             </div>
                         </a>
                         <a href="<?=base_url()?>plusone/fastorder">
-                            <div class="item itemOne">
+                            <div class="item">
                                 <div class="itemimg">
                                     <img src="<?=base_url()?>plusone88/assets/img/icon-lightning@2x.png">
                                 </div>
@@ -182,67 +182,46 @@
 
                     <? if ($this->isLogin ==  false): ?>
                     <!-- 未登入熱門技能畫面 -->
-                    <div class="hot_skill_game" v-show="!isLogin">
+                    <div class="hot_skill_game">
                         <div class="hot_skill_text">
                             熱門技能
-                        </div>
-                        <div>
-                            <a href="<?=base_url()?>plusone/playerlist" class="nav-item">
-                                <div class="image">
-                                    <img src="<?=base_url()?>plusone88/assets/img/Group 5.png">
-                                </div>
-                                <div class="game">
-                                    英雄聯盟
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="<?=base_url()?>plusone/playerlist" class="nav-item">
-                                <div class="image">
-                                    <img src="<?=base_url()?>plusone88/assets/img/Group 3.png">
-                                </div>
-                                <div class="game">
-                                    傳說對決
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="<?=base_url()?>plusone/playerlist" class="nav-item">
-                                <div class="image">
-                                    <img src="<?=base_url()?>plusone88/assets/img/Group 1.png">
-                                </div>
-                                <div class="game">
-                                    激鬥峽谷
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <?php else: ?>
-                    <!-- 登入常用技能畫面 -->
-                    <div class="hot_skill_game" v-show="isLogin">
-                        <div class="hot_skill_img">
-                            <div class="hot_skill_text">
-                                常用技能
-                            </div>
-                            <div class="hot_skill_img_div">
-                                <a href="<?=base_url()?>plusone/skill"><img src="<?=base_url()?>plusone88/assets/img/Group 823@2x.png"></a>
-                            </div>
-                        </div>
+                        </div>     
                         <?php foreach ($is_hot as $key=>$list): ?>
-                        <div class="s_use_talent">
-                            <a href="<?=base_url()?>plusone/playerlist" class="nav-item">
+                        <div>
+                            <a href="<?=base_url()?>plusone/playerlist/<?=$list['id']?>" class="nav-item">
                                 <div class="image">
                                     <img src="<?=$list['pic']?>">
                                 </div>
                                 <div class="game">
-                                <?=$list['skill_name']?>
+                                    <?=$list['skill_name']?>
                                 </div>
                             </a>
                         </div>
                         <?php endforeach; ?>
-                        
-                        <a href="<?=base_url()?>plusone/skill">
+                    </div>
+
+                    <?php else: ?>
+                    <!-- 登入常用技能畫面 -->
+                    <div class="hot_skill_game">
+                        <div class="hot_skill_img">
+                            <div class="hot_skill_text">
+                                常用技能
+                            </div>
+                            <a class="hot_skill_img_div" href="<?=base_url()?>member/skill">
+                                <img src="<?=base_url()?>plusone88/assets/img/Group 823@2x.png">
+                            </a>
+                        </div>
+                        <div class="s_use_talent" v-for="list in haveSkill">
+                            <a :href="'https://www.plusone88.com/plusone/playerlist/'+list.id" class="nav-item">
+                                <div class="image">
+                                    <img :src="list.image">
+                                </div>
+                                <div class="game">
+                                    {{ list.title }}
+                                </div>
+                            </a>
+                        </div>
+                        <a href="<?=base_url()?>member/skill">
                             <div class="add_use_talent">
                                 添加常用技能
                             </div>

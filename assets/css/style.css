@@ -245,7 +245,7 @@ a {
     margin-left: 0;
     transition: all .5s;
     width: 100%;
-    background-color: #FFFCFA;
+    background-color: #e9f4f4;
     height: calc(100vh - 66px);
     overflow: scroll;
 }
@@ -254,7 +254,7 @@ a {
     margin-left: 0;
     transition: all .5s;
     width: calc(100vw - 220px);
-    background-color: #FFFCFA;
+    background-color: #e9f4f4;
     overflow: auto;
     height: calc(100vh - 66px);
     display: flex;
@@ -267,6 +267,8 @@ a {
     width: 100%;
     background-color: transparent;
     height: calc(100vh - 66px);
+    background: url(/plusone88/assets/img/fastorder.png) no-repeat center center;
+    background-size: cover;
 }
 
 .confirm_order_rightfunc {
@@ -931,7 +933,7 @@ a {
 
 .body_content {
     display: flex;
-    background-color: #FFFCFA;
+    background-color: #e9f4f4;
 }
 
 .order_body_content {
@@ -1117,7 +1119,6 @@ a {
 
 .many_games {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     width: 100%;
@@ -1183,6 +1184,7 @@ a {
 
 .many_cards_t_div {
     width: 100%;
+    background: #fff;
 }
 
 .many_cards_t_div img {
@@ -1422,7 +1424,7 @@ a {
     min-width: 200px;
     max-width: 200px;
     flex-wrap: wrap;
-    background-color: #fff;
+    background-color: transparent;
     margin-right: 0;
     margin-bottom: 4%;
 }
@@ -1432,7 +1434,7 @@ a {
     min-width: 200px;
     max-width: 200px;
     flex-wrap: wrap;
-    background-color: #fff;
+    background-color: transparent;
     margin-right: 0;
     margin-bottom: 4%;
 }
@@ -1674,6 +1676,7 @@ a {
 
 .many_cards_b {
     padding: 15px;
+    background: #fff;
 }
 
 .alotofskills {
@@ -3131,7 +3134,7 @@ a {
 .dramic_1 {
     display: flex;
     margin-top: 40px;
-    background: #FFFCFA;
+    background: #e9f4f4;
     border-radius: 20px;
 }
 
@@ -6177,7 +6180,6 @@ a {
 
     .many_games {
         display: flex;
-        justify-content: space-around;
         align-items: center;
         margin: 0 auto;
         width: 600px;
@@ -6279,7 +6281,7 @@ a {
         margin-left: 0;
         transition: all .5s;
         min-width: 1100px;
-        background-color: #FFFCFA;
+        background-color: #e9f4f4;
         height: calc(100vh - 66px);
         display: flex;
         justify-content: center;
@@ -6531,7 +6533,6 @@ a {
 
     .many_games {
         display: flex;
-        justify-content: space-around;
         align-items: center;
         margin: 0 auto;
         width: 100%;
@@ -7052,7 +7053,7 @@ a {
         margin-left: 0;
         transition: all .5s;
         min-width: 100%;
-        background-color: #FFFCFA;
+        background-color: #e9f4f4;
         height: calc(100vh - 66px);
         display: flex;
         justify-content: center;

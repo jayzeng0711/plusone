@@ -16,30 +16,52 @@
             </div>
         </div>
     </div>
-    <div class="alotofskills">
-        常用技能
-    </div>
-    <div class="home_many_games">
-        <div class="many_games_wrap">
-            <div class="look_more">
-                <a href="<?=base_url()?>plusone/skill">看更多</a>
-            </div>
-            <div class="many_games">
-                <?php foreach ($is_hot as $key=>$list): ?>
-                <div class="use_talent">
-                    <a href="<?=base_url()?>plusone/playerlist/<?=$list['id']?>" class="nav-item_ano">
-                        <div class="image_ano">
-                            <img src="<?=$list['pic']?>">
-                        </div>
-                        <div class="game_ano">
-                        <?=$list['skill_name']?>
-                        </div>
-                    </a>
-                </div>
-                <?php endforeach; ?>
-          
-            </div>
+    <? if ($this->isLogin ==  false): ?>
+        <div class="alotofskills">
+            熱門技能
         </div>
+    <?php else: ?>
+        <div class="alotofskills">
+            常用技能
+        </div>
+    <?php endif; ?>
+    <div class="home_many_games">
+        <? if ($this->isLogin ==  false): ?>
+            <div class="many_games_wrap">
+                <div class="many_games">
+                    <?php foreach ($is_hot as $key=>$list): ?>
+                    <div class="use_talent">
+                        <a href="<?=base_url()?>plusone/playerlist/<?=$list['id']?>" class="nav-item_ano">
+                            <div class="image_ano">
+                                <img src="<?=$list['pic']?>">
+                            </div>
+                            <div class="game_ano">
+                                <?=$list['skill_name']?>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="many_games_wrap">
+                <div class="look_more">
+                    <a href="<?=base_url()?>member/skill">看更多</a>
+                </div>
+                <div class="many_games">
+                    <div class="use_talent" v-for="list in haveSkill">
+                        <a :href="'https://www.plusone88.com/plusone/playerlist/'+list.id" class="nav-item_ano">
+                            <div class="image_ano">
+                                <img :src="list.image">
+                            </div>
+                            <div class="game_ano">
+                                {{ list.title }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="two_methods">
             <a href="<?=base_url()?>plusone/fastorder" class="mobile_size">
                 <div class="fast_date_order">
@@ -80,7 +102,6 @@
                 看更多
             </div>
         </div>
-             
             <div class="many_cards_all">
                 <?php foreach ($list['date'] as $key=>$l): ?>
                 <a href="<?=base_url()?>plusone/person/<?=$l['id']?>" class="mobile_card_wid">
@@ -98,7 +119,7 @@
                                         高人氣
                                     </div>
                                 </div>
-                                <div class="many_cards_autio" id="cards_autio_1" @click.stop.prevent="playaudio(1)">
+                                <div class="many_cards_autio" id="cards_autio_<?=$l['id']?>" @click.stop.prevent="playaudio(<?=$l['id']?>)">
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -106,8 +127,8 @@
                                     <span></span>
                                     <span></span>
                                     <span></span>
-                                    <p class="many_cards_autio_second" id="playersec_1">10”</p>
-                                    <audio id="player_1" preload="preload" src="<?=$l['voice']?>"></audio>
+                                    <p class="many_cards_autio_second" id="playersec_<?=$l['id']?>">10”</p>
+                                    <audio id="player_<?=$l['id']?>" preload="preload" src="<?=$l['voice']?>"></audio>
                                 </div>
                                 <div class="many_cards_autio_status"></div>
                             </div>
