@@ -467,6 +467,8 @@ var vm = new Vue({
             origameid: "",
             origamepri: 0,
             origamerank: 0,
+            choiceskill: "請選擇常用技能",
+            choiceskillid: "",
         };
     },
     created() {
@@ -978,11 +980,24 @@ var vm = new Vue({
             $('.preset').removeClass('active');
             $(`#preset_${num}`).addClass('active');
         },
+        thisskill(text, num) {
+            this.choiceskill = text;
+            this.openprice = 0;
+            this.choiceskillid = num;
+            $('.preset').removeClass('active');
+            $(`#preset_${num}`).addClass('active');
+        },
         thisbanks(text, num) {
             this.whichbank = text;
             this.openbank = 0;
             $('.preset').removeClass('active');
             $(`#preset_${num}`).addClass('active');
+        },
+        postdramic(e){
+            if(this.desc == ""){
+                e.preventDefault();
+                return false;
+            }
         },
         addGame() {
             this.gametotal++;
@@ -1791,6 +1806,9 @@ var vm = new Vue({
         },
         introInputEdit(){
             this.introducenum = this.editintrotext.length;
+        },
+        descInput(){
+            this.remnant = this.desc.length;
         },
         apply_settle(e) {
             var vaild = this.settbleform[0];

@@ -5,7 +5,7 @@
         </div>
         <div class="myorder_all_text">
             <div class="together myorder_all myorder_speacil_line" id="myorder_1" @click="myorderchange(1)">全部約單</div>
-            <div class="together myorder_alling" id="myorder_2" @click="myorderchange(2)">進行中的約單</div>
+            <!-- <div class="together myorder_alling" id="myorder_2" @click="myorderchange(2)">進行中的約單</div> -->
             <div class="together myorder_history" id="myorder_3" @click="myorderchange(3)">歷史約單</div>
         </div>
         <div class="myorder_data_wrap" v-show="all_order == 1">

@@ -211,7 +211,7 @@
                                 <img src="<?=base_url()?>plusone88/assets/img/Group 823@2x.png">
                             </a>
                         </div>
-                        <div class="s_use_talent" v-for="list in haveSkill">
+                        <div class="s_use_talent" v-for="list in haveSkill.slice(0, 5)">
                             <a :href="'https://www.plusone88.com/plusone/playerlist/'+list.id" class="nav-item">
                                 <div class="image">
                                     <img :src="list.image">

@@ -12,7 +12,7 @@
                 </div>
                 <div class="balance">
                     <img width="24" height="24" src="/plusone88/assets/img/icon-money@2x.png">
-                    <span class="nowmoney">25</span>
+                    <span class="nowmoney"><?=$this->member_model->getUser()->g_point?></span>
                 </div>
             </div>
             <div class="balance_wrap_hr_div">

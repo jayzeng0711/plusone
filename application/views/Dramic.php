@@ -1,4 +1,3 @@
-
 <div class="balance_order_rightfunc">
     <div class="myorder_wrap">
         <div class="coupon_text" style="width: 1100px">
@@ -10,29 +9,36 @@
                     <div class="dramic_2" @click="toggleswitch(1)">
                         推薦
                     </div>
-                    <div class="dramic_3" @click="toggleswitch(2)">
+                    <!-- <div class="dramic_3" @click="toggleswitch(2)">
                         最近
-                    </div>
+                    </div> -->
                 </div>
                 <div class="dramic_12">
+                    <!-- 這邊foreach         這裏數字1 填入文章id  -->            
                     <div @click.stop="presonmessagepage(1)">
                         <div class="dramic_5">
                             <div class="dramic_6">
                                 <img class="dramic_7" src="/plusone88/assets/img/img-profile@2x.png" alt="">
                             </div>
                             <div class="dramic_8">
+                                                    <!-- 人名 -->
                                 <div class="dramic_9">kevin</div>
+                                                    <!-- 幾分鐘前 -->
                                 <div class="dramic_10">1小時前</div>
                             </div>
                         </div>
                         <div class="dramic_13">
                             <div class="dramic_14">
+                                <!-- 內容 -->
                                 嗨 大家好久不見～
                             </div>
                             <div class="dramic_15">
+                                 <!-- 如果文章有圖片 圖片也要foreach -->
+                                <img class="dramic_16" src="/plusone88/assets/img/Group 117@2x.png" width="300" height="400" alt="">
                                 <img class="dramic_16" src="/plusone88/assets/img/Group 117@2x.png" width="300" height="400" alt="">
                             </div>
                             <div class="dramic_17">
+                                <!-- 常用技能 -->
                                 傳說對決 150幣/半小時
                             </div>
                         </div>
@@ -47,7 +53,8 @@
                                 <div class="dramic_23">
                                     <img class="dramic_24" src="/plusone88/assets/img/icon-edit@2x.png" alt="">
                                 </div>
-                                <div class="dramic_26" @click="message(1)">
+                                <!--                               這裏數字1 填入文章id  -->       
+                                <div class="dramic_26" @click.stop="message(1)">
                                     馬上留言給他/她
                                 </div>
                             </div>
@@ -56,10 +63,10 @@
                             <textarea class="dramic_28" name="" id="" rows="3" maxlength="140"></textarea>
                         </div>
                         <div class="edit_div_17" style="margin-bottom: 10px;" v-show="openmes == 1">
-                            <div class="edit_div_18" @click="cancelmessage()">
+                            <div class="edit_div_18" @click.stop="cancelmessage()">
                                 取消
                             </div>
-                            <div class="edit_div_19" @click="postmessage()">
+                            <div class="edit_div_19" @click.stop="postmessage()">
                                 提交
                             </div>
                         </div>
@@ -68,13 +75,19 @@
                         </div>
                         <div class="dramic_29">
                             <div class="dramic_30">
+                                <!-- 幾個讚  -->       
                                 11個讚
                             </div>
                             <div class="dramic_31">
+                                <!-- 幾個留言  -->
                                 2則留言
                             </div>
                         </div>
                     </div>
+                    <!-- 到這這邊foreach -->
+
+
+
                     <div>
                         <div class="dramic_5">
                             <div class="dramic_6">
@@ -107,7 +120,7 @@
                                 <div class="dramic_23">
                                     <img class="dramic_24" src="/plusone88/assets/img/icon-edit@2x.png" alt="">
                                 </div>
-                                <div class="dramic_26" @click="message(2)">
+                                <div class="dramic_26" @click.stop="message(2)">
                                     馬上留言給他/她
                                 </div>
                             </div>
@@ -116,10 +129,10 @@
                             <textarea class="dramic_28" name="" id="" rows="3" maxlength="140"></textarea>
                         </div>
                         <div class="edit_div_17" style="margin-bottom: 10px;" v-show="openmes == 2">
-                            <div class="edit_div_18" @click="cancelmessage()">
+                            <div class="edit_div_18" @click.stop="cancelmessage()">
                                 取消
                             </div>
-                            <div class="edit_div_19" @click="postmessage()">
+                            <div class="edit_div_19" @click.stop="postmessage()">
                                 提交
                             </div>
                         </div>
@@ -135,6 +148,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div>
                         <div class="dramic_5">
                             <div class="dramic_6">
@@ -167,7 +182,7 @@
                                 <div class="dramic_23">
                                     <img class="dramic_24" src="/plusone88/assets/img/icon-edit@2x.png" alt="">
                                 </div>
-                                <div class="dramic_26" @click="message(3)">
+                                <div class="dramic_26" @click.stop="message(3)">
                                     馬上留言給他/她
                                 </div>
                             </div>
@@ -176,10 +191,10 @@
                             <textarea class="dramic_28" name="" id="" rows="3" maxlength="140"></textarea>
                         </div>
                         <div class="edit_div_17" style="margin-bottom: 10px;" v-show="openmes == 3">
-                            <div class="edit_div_18" @click="cancelmessage()">
+                            <div class="edit_div_18" @click.stop="cancelmessage()">
                                 取消
                             </div>
-                            <div class="edit_div_19" @click="postmessage()">
+                            <div class="edit_div_19" @click.stop="postmessage()">
                                 提交
                             </div>
                         </div>
@@ -198,17 +213,19 @@
                 </div>
             </div>
             <div class="dramic_32">
+                <? if ($this->isLogin): ?>
                 <div class="dramic_33">
                     <div class="dramic_34">
-                        <img class="dramic_35" src="/plusone88/assets/img/img-profile@2x.png" alt="">
+                        <img class="dramic_35" src="<?=$this->isLogin->picture?>" alt="">
                     </div>
                     <div class="dramic_36">
-                        kevin
+                        <?=$this->isLogin->fakename?>
                     </div>
-                    <div class="dramic_37" @click="opmespop(1)">
+                    <div class="dramic_37" @click.stop="opmespop(1)">
                         <img class="dramic_38" src="/plusone88/assets/img/icon-upload@2x.png" alt="">
                     </div>
                 </div>
+                <?php endif; ?>
                 <div class="dramic_39">
                     <div class="dramic_40">
                         熱門推薦
@@ -297,49 +314,63 @@
     </div>
     <div class="dramic_49">
         <div class="dramic_6">
-            <img class="dramic_7" src="/plusone88/assets/img/img-profile@2x.png" alt="">
+            <img class="dramic_7" src="<?=$this->isLogin->picture?>" alt="" style="border-radius: 50%;">
         </div>
         <div class="dramic_8">
-            <div class="dramic_9">kevin</div>
+            <div class="dramic_9"><?=$this->isLogin->fakename?></div>
         </div>
     </div>
-    <div class="dramic_50">
-        <textarea @input="descInput" v-model="desc" class="dramic_51" name="" id="" col="30" maxlength="150" rows="5" placeholder="嗨 跟大家分享你的心情吧！"></textarea>
-    </div>
-    <div class="dramic_61" v-if="list.length>0" v-cloak>
-        <div v-for="(v,i) in list" :key="i" id="put_images_div_1" class="put_images_div">
-            <img id="put_images_1" class="put_images" :src="v.src" alt="">
-            <div class="imgclose" @click="delImg(i)">
-                <i class="fas fa-times"></i>
+    <form method="post" action="https://www.plusone88.com/api/dramic" @submit="postdramic">
+        <div class="dramic_50">
+            <textarea @input="descInput" v-model="desc" class="dramic_51" name="dramic" id="" col="30" maxlength="150" rows="5" placeholder="嗨 跟大家分享你的心情吧！"></textarea>
+        </div>
+        <div class="dramic_61" v-if="list.length>0" v-cloak>
+            <div v-for="(v,i) in list" :key="i" id="put_images_div_1" class="put_images_div">
+                <img id="put_images_1" class="put_images" :src="v.src" alt="">
+                <div class="imgclose" @click="delImg(i)">
+                    <i class="fas fa-times"></i>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="dramic_52">
-        <div class="dramic_53">
-            {{ image_error_mes }}
+        <div class="dramic_52">
+            <div class="dramic_53">
+                {{ image_error_mes }}
+            </div>
+            <div class="dramic_54">
+                {{ remnant }}/150
+            </div>
         </div>
-        <div class="dramic_54">
-            {{ remnant }}/150
+        <div class="dramic_55">
+            <div class="dramic_56" @click="messageimages()">
+                <img class="dramic_7" src="/plusone88/assets/img/icon-uploadphoto@2x.png" alt="">
+            </div>
+            <input type="file" multiple class="messageinput" @change="imagepro()" id="messageinput" name="file[]" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp">
+            <div class="price_form" @click.stop="openPrices()" style="padding: 0;margin-bottom: 0;width: 60%;">
+                <div style="width: 300px">
+                    {{ choiceskill }}
+                </div>
+                <div class="many_prices" v-show="openprice == 1" style="width: 280px;bottom: 40px;height: 150px;">
+                    <div class="prices_list" @click.stop="thisskill(list.title,list.id)" v-for="list in haveSkill">
+                        {{ list.title }}
+                        <img :id="'preset_'+list.id" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <input type="text" v-model="choiceskillid" name="choiceskillid" hidden>
+            <!-- <div class="dramic_57">
+                <img class="dramic_7" src="/plusone88/assets/img/icon-tag@2x.png" alt="">
+            </div>
+            <div class="dramic_58">
+                <img class="dramic_7" src="/plusone88/assets/img/icon-hashtag@2x.png" alt="">
+            </div>
+            <div class="dramic_59">
+                <input class="dramic_60" type="text" placeholder="點擊輸入話題 (限10字)" maxlength="10" v-model="hashmes">
+            </div> -->
         </div>
-    </div>
-    <div class="dramic_55">
-        <div class="dramic_56" @click="messageimages()">
-            <img class="dramic_7" src="/plusone88/assets/img/icon-uploadphoto@2x.png" alt="">
+        <div class="dramic_62">
+            <button class="dramic_63" type="submit">送出審核</button>
         </div>
-        <input type="file" multiple class="messageinput" @change="imagepro()" id="messageinput" name="file[]" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp">
-        <div class="dramic_57">
-            <img class="dramic_7" src="/plusone88/assets/img/icon-tag@2x.png" alt="">
-        </div>
-        <div class="dramic_58">
-            <img class="dramic_7" src="/plusone88/assets/img/icon-hashtag@2x.png" alt="">
-        </div>
-        <div class="dramic_59">
-            <input class="dramic_60" type="text" placeholder="點擊輸入話題 (限10字)" maxlength="10" v-model="hashmes">
-        </div>
-    </div>
-    <div class="dramic_62">
-        <button class="dramic_63">送出審核</button>
-    </div>
+    </form>
 </div>
 
 <div class="dramic_66" v-show="presonmepop == 1">
@@ -678,4 +709,3 @@
 </div>
 <div class="logoutmaskBg" v-show="presonmepop == 1" @click.stop="presonmessagepage(0)"></div>
 <div class="logoutmaskBg" v-show="messagepop == 1" @click="opmespop(2)"></div>
-

@@ -49,7 +49,7 @@
                     <a href="<?=base_url()?>member/skill">看更多</a>
                 </div>
                 <div class="many_games">
-                    <div class="use_talent" v-for="list in haveSkill">
+                    <div class="use_talent" v-for="list in haveSkill.slice(0, 5)">
                         <a :href="'https://www.plusone88.com/plusone/playerlist/'+list.id" class="nav-item_ano">
                             <div class="image_ano">
                                 <img :src="list.image">
@@ -81,12 +81,12 @@
                 <div class="rank">
                     <div>
                         <div class="order_word">
-                            <span>排行榜</span> <img src="<?=base_url()?>plusone88/assets/img/icon-rightarrow@2x.png" alt="" width="5">
+                            <span>青豆遊戲</span> <img src="<?=base_url()?>plusone88/assets/img/icon-rightarrow@2x.png" alt="" width="5">
                         </div>
-                        <div class="totla_order_rank">每日大神匯聚</div>
+                        <div class="totla_order_rank">玩遊戲賺青豆</div>
                     </div>
                     <div>
-                        <img class="rank_img" src="<?=base_url()?>plusone88/assets/img/icon-link1@2x.png" alt="">
+                        <img class="rank_img" src="<?=base_url()?>plusone88/assets/img/icon-link2@2x.png" alt="">
                     </div>
                 </div>
             </a>
@@ -98,9 +98,9 @@
             <div>
                 <?=$list['skill_name']?>
             </div>
-            <div class="two_look_more">
+            <a href="https://www.plusone88.com/plusone/playerlist/<?=$list['id']?>" class="two_look_more">
                 看更多
-            </div>
+            </a>
         </div>
             <div class="many_cards_all">
                 <?php foreach ($list['date'] as $key=>$l): ?>
@@ -162,12 +162,7 @@
                 </a>
                 <?php endforeach; ?>
             </div>
-             
-
-
         <?php endforeach; ?>
-
-
     </div>
 </div>
 <div id="panel"></div>

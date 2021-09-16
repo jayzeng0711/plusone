@@ -1770,7 +1770,7 @@ a {
 
 .rank {
     justify-content: space-around;
-    background-color: #AFDCE0;
+    background-color: #b6d65a;
     width: 150px;
     padding: 16px 20px;
     border-radius: 13px;
@@ -3329,10 +3329,13 @@ a {
     width: 50px;
     margin-right: 20px;
     cursor: pointer;
+    height: 50px;
+    border-radius: 50%;
 }
 
 .dramic_35 {
     width: 100%;
+    border-radius: 50%;
 }
 
 .dramic_37 {
@@ -6196,7 +6199,7 @@ a {
 
     .rank {
         justify-content: space-around;
-        background-color: #AFDCE0;
+        background-color: #b6d65a;
         width: 200px;
         padding: 16px 20px;
         border-radius: 13px;
@@ -6555,7 +6558,7 @@ a {
 
     .rank {
         justify-content: space-around;
-        background-color: #AFDCE0;
+        background-color: #b6d65a;
         width: 135px;
         padding: 16px 20px;
         border-radius: 13px;
