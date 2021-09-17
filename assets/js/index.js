@@ -307,18 +307,38 @@ var vm = new Vue({
             list: [], //用于结构渲染
             allArr: [],  //存储每次上传的所有flie，
             deletearr: [],
-            limitNum: 9, //限制数量
+            limitNum: 1, //限制数量
             replypop: 0,
-            mesper: [
+            singlemessage: 
                 {
-                    "id": 1,
-                    "img": "img-profile@2x.png",
-                    "name": "Sheena Chen",
-                    "tag": "player-tag@2x.png",
-                    "message": "下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！",
-                    "time": "1小時前",
+                    // "id": 1,
+                    // "img": "/plusone88/assets/img/img-profile@2x.png",
+                    // "name": "kevin",
+                    // "time": "1小時前",
+                    // "messageimg": "/plusone88/assets/img/Group 195@2x.png",
+                    // "message": "嗨 大家好久不見～嗨 大家好久不見～嗨 大家好久不見～",
+                    // "skill": "傳說對決 150幣/半小時",
+                    // "good": "15",
+                    // "messagenums": "15",
+                    // "mesper": [
+                    //     {
+                    //         "id": 1,
+                    //         "img": "img-profile@2x.png",
+                    //         "name": "Sheena Chen",
+                    //         "tag": "player-tag@2x.png",
+                    //         "message": "下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！",
+                    //         "time": "1小時前",
+                    //     },
+                    //     {
+                    //         "id": 1,
+                    //         "img": "img-profile@2x.png",
+                    //         "name": "Sheddd",
+                    //         "tag": "player-tag@2x.png",
+                    //         "message": "、玩！",
+                    //         "time": "2小時前",
+                    //     },
+                    // ],
                 },
-            ],
             dramic_27: "",
             replys: [
                 // {
@@ -1403,19 +1423,45 @@ var vm = new Vue({
         cancelmessage() {
             this.openmes = 0;
         },
-        postmessage() {
+        postmessage(id) {
             this.openmes = 0;
-            var marr = [];
-            marr.id = 2;
-            marr.img = "img-profile@2x.png";
-            marr.name = "Sheena Chen";
-            marr.tag = "player-tag@2x.png";
-            marr.message = this.dramic_27;
-            marr.time = "剛剛發佈";
-            this.mesper.unshift(marr);
-            this.dramic_27 = "";
+            if(this.dramic_27 == ""){
+                return false
+            }else{
+                $.post("https://www.plusone88.com/api/dramicmessage", {
+                    "id" : id,
+                    "text" : vm.dramic_27,
+                })
+                .done(function (result) {
+                    result = JSON.parse(result)
+                    vm.singlemessage.mesper.unshift(result);
+                    var topmessage = parseInt($(`#topmessage_${id}`).text());
+                    $(`#topmessage_${id}`).text(topmessage + 1);
+                    var message = parseInt($(`#message_${id}`).text())
+                    $(`#message_${id}`).text(message + 1);
+                }) 
+            }
+            vm.dramic_27 = "";
         },
+        addlove(id){
+            $.post("https://www.plusone88.com/api/dramiclike", {
+                "id" : id,
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                if(result.status){
+                    $(`#toplove_${id}`).attr('src','/plusone88/assets/img/icon-heart-pre@3x.png')
+                    $(`#love_${id}`).attr('src','/plusone88/assets/img/icon-heart-pre@3x.png')
+                    var topgood = parseInt($(`#topgood_${id}`).text());
+                    $(`#topgood_${id}`).text(topgood + 1);
+                    var good = parseInt($(`#good_${id}`).text())
+                    $(`#good_${id}`).text(good + 1);
+                }
+            }) 
+        },
+        nothing(){
 
+        },
         messageimages() {
             $('.messageinput').click();
         },
@@ -1447,7 +1493,7 @@ var vm = new Vue({
                     reader.onload = function (e) {
                         var _src = e.target.result;
                         newArr[i].src = _src;
-                        that.clearVal();
+                        // that.clearVal();
                     };
                     reader.readAsDataURL(obj.files[i]);
                     if (obj.files[i].size > imagesize) {
@@ -1501,15 +1547,16 @@ var vm = new Vue({
             this.replypop = id;
         },
         replymessage(name) {
-            var replyarr = [];
-            replyarr.id = 2,
-                replyarr.quname = name;
-            replyarr.anname = "立杰";
-            replyarr.message = this.replytext;
-            replyarr.time = "剛剛發佈";
-            this.replypop = 0;
-            this.replytext = "";
-            this.replys.unshift(replyarr)
+            // alert(name)
+            // var replyarr = [];
+            // replyarr.id = 2,
+            // replyarr.quname = name;
+            // replyarr.anname = "立杰";
+            // replyarr.message = this.replytext;
+            // replyarr.time = "剛剛發佈";
+            // this.replypop = 0;
+            // this.replytext = "";
+            // this.replys.unshift(replyarr)
         },
         sel_pre_top(id) {
             $('.border').removeClass('dramic_select')
@@ -1547,8 +1594,19 @@ var vm = new Vue({
             $('.specailGift').removeClass("gift");
             $('.specialGiftdate').removeClass("gift");
         },
-        presonmessagepage(num) {
-            this.presonmepop = num
+        async presonmessagepage(num,id) {
+            if(num == 1){
+                return await $.get(`https://www.plusone88.com/api/dramicinfo/${id}`, {
+                            
+                })
+                .done(function (result) {
+                    result = JSON.parse(result)
+                    vm.singlemessage = result;
+                    vm.presonmepop = num;
+                })
+            }else{
+                this.presonmepop = num;
+            }
         },
         left_prebtn() {
             $('.person_31').css('display', 'block');

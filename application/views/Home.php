@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </a>
-            <a href="<?=base_url()?>plusone/rank" class="mobile_size">
+            <a href="http://tt.live-pk.com/" class="mobile_size"  target="_blank">
                 <div class="rank">
                     <div>
                         <div class="order_word">
