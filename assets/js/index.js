@@ -19,12 +19,9 @@ var vm = new Vue({
             phonesuccess: "+886912345678",
             pcoin: 1250,
             gcoin: 1000,
-            taicoin: 100000,
-            gcoinone: 1000,
-            gcointwo: 3000,
-            gcointhree: 5000,
-            gcoinfour: 10000,
-            gacoin: 1000,
+            taicoin: 0,
+            gacoin: 0,
+            allcoin:[],
             manycoin: 0,
             //是否是登入狀態
             isLogin: false,
@@ -497,6 +494,7 @@ var vm = new Vue({
         this.NologingetAllSkill();
         this.getsingleskill();
         this.getdataskill();
+        this.getallcoin();
     },
     
     computed: {
@@ -571,6 +569,16 @@ var vm = new Vue({
                 vm.editskillimg = result['image'];
                 vm.editintrotext = result['intro'];
                 $('#player_1').attr('src',result['voice'])
+            })
+        },
+        async getallcoin(){
+            return await $.get("https://www.plusone88.com/livepk/pointlist", {
+            
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                vm.allcoin = result;
+                vm.gacoin = vm.allcoin[0];
             })
         },
         async getdataskill(){
@@ -1057,6 +1065,19 @@ var vm = new Vue({
             this.gacoin = num;
             $('.preset').removeClass('active');
             $(`#preset_${id}`).addClass('active');
+            $.post("https://www.plusone88.com/livepk/pointlist", {
+                "coin":num
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                vm.taicoin = result['point']
+            })
+        },
+        reviewcoin(e){
+            if(this.gacoin == 0){
+                e.preventDefault();
+                return false;
+            }
         },
         goodfriend() {
             this.friendsopen = 1;

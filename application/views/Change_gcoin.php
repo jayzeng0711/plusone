@@ -41,21 +41,9 @@
                         <img class="balance_wrap_bot_twog_div_botomg" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                     </div>
                     <div class="coin_many_prices" v-show="manycoin == 1">
-                        <div class="coin_prices_list" @click.stop="cancelcoin(gcoinone,0)">
-                            {{ gcoinone | money }}
-                            <img id="preset_0" class="preset active" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
-                        <div class="coin_prices_list" @click.stop="cancelcoin(gcointwo,1)">
-                            {{ gcointwo | money }}
-                            <img id="preset_1" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
-                        <div class="coin_prices_list" @click.stop="cancelcoin(gcointhree,2)">
-                            {{ gcointhree | money }}
-                            <img id="preset_2" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                        </div>
-                        <div class="coin_prices_list" @click.stop="cancelcoin(gcoinfour,3)">
-                            {{ gcoinfour | money }}
-                            <img id="preset_3" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
+                        <div class="coin_prices_list" v-for="(m,i) in allcoin" @click.stop="cancelcoin(m,i)" v-if="i != 0">
+                            {{ m | money }}
+                            <img :id="'preset_'+i" class="preset" :class="{ active : i==1 }" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -65,14 +53,17 @@
                     {{ taicoin | money }}
                 </div>
             </div>
-            <div class="gcoin_cc_wrap">
-                <div class="gcoin_cancel_wrap">
-                    取消
+            <form method="post" action="https://www.plusone88.com/livepk/recharge" @submit="reviewcoin">
+                <input type="text" v-model="gacoin" name="coin" hidden>
+                <div class="gcoin_cc_wrap">
+                    <div class="gcoin_cancel_wrap">
+                        取消
+                    </div>
+                    <button class="gcoin_confirm_wrap" style="border:none">
+                        確認送出
+                    </button>
                 </div>
-                <div class="gcoin_confirm_wrap">
-                    確認送出
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
