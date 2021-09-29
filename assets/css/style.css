@@ -299,7 +299,6 @@ a {
 }
 
 .items {
-    padding-top: 12px;
     overflow-y: auto;
     position: relative;
 }
@@ -705,11 +704,12 @@ a {
 
 .login_body_div_input {
     border: none;
-    height: 96%;
+    height: 90%;
     outline: none;
     color: #333;
     font-weight: 500;
     font-size: 16px;
+    background: transparent;
 }
 
 .login_body_div_input::placeholder {
@@ -843,14 +843,16 @@ a {
 }
 
 .valid_code_div_input {
-    border: none;
+    border: 1px solid #595959;
     outline: none;
-    height: 96%;
+    height: 46px;
+    padding: 0 10px;
     color: #333;
     font-weight: 500;
     font-size: 16px;
     border-radius: 4px;
     width: 120px;
+    background: transparent;
 }
 
 .valid_code_div_input::placeholder {
@@ -881,9 +883,10 @@ a {
     color: #272828;
     height: 46px;
     margin-left: 25px;
-    padding: 0 15px;
+    padding: 0 3px;
     white-space: nowrap;
     cursor: pointer;
+    box-sizing:border-box;
 }
 
 .codebtndiv_get {
@@ -894,7 +897,7 @@ a {
     color: #272828;
     height: 46px;
     margin-left: 25px;
-    padding: 0 9px;
+    padding: 0 1px;
     white-space: nowrap;
     cursor: pointer;
 }
@@ -1033,7 +1036,7 @@ a {
     z-index: 7;
     position: absolute;
     background-color: #fff;
-    left: 54px;
+    left: 27px;
 }
 
 .many_country {
@@ -6211,6 +6214,10 @@ a {
     }
 
     .search_many_cards_all {
+        display: flex;
+        overflow: visible;
+        justify-content: space-between;
+        flex-wrap: wrap;
         width: auto;
     }
 
@@ -6453,6 +6460,7 @@ a {
     .leftfunc_mobile_wrap {
         height: 100%;
         position: relative;
+        overflow-y: scroll;
     }
 
     .leftfunc {
@@ -6494,7 +6502,6 @@ a {
     .mobile_headimg {
         display: flex;
         align-items: center;
-        padding: 16px 0;
     }
 
     .mobile_name {
@@ -6541,7 +6548,7 @@ a {
         margin: 0 auto;
         width: 100%;
         margin-bottom: 3%;
-        justify-content: center;
+        margin-left: 15px;
     }
 
     .alotofskills {
@@ -6623,13 +6630,12 @@ a {
 
     .search_many_cards {
         display: flex;
-        min-width: 0px;
-        max-width: 200px;
+        min-width: 100%;
+        max-width: 100%;
         flex-wrap: wrap;
-        background-color: #fff;
-        margin-right: 0;
+        background-color: transparent;
+        margin-right: 0%;
         margin-bottom: 4%;
-        width: 50%;
     }
 
     .all_form_style {

@@ -61,9 +61,9 @@
                             <span class="mobilenum">{{ area_code }}</span><img class="mobileimg" src="<?=base_url()?>plusone88/assets/img/icon-drop@2x.png">
                             <input v-model="area_code" type="hidden" name="areacode">
                         </div>
-                        <div class="login_body_div">
+                        <!-- <div class="login_body_div"> -->
                             <input class="login_body_div_input" v-model="phonenumber" name="phone" value="" placeholder="請輸入手機號碼" @click="opencountry(1)">
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
                 <div class="many_country_wrap" v-show="many_country_wrap == 1">
@@ -75,13 +75,13 @@
             </div>
             <div class="error_message"></div>
             <div class="valid_code">
-                <div class="valid_code_div">
+                <!-- <div class="valid_code_div"> -->
                     <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" name="vaild" @click="code_confirm()">
-                </div>
+                <!-- </div> -->
                 <div :class="codebtndiv" @click.prevent="getcode()" class="g-recaptcha">
                     <button type="button">
                         <span v-if="nogetcode">獲取驗證碼</span>
-                        <span style="color:#B5B5B5" v-else>重新傳送(<span>{{ reciprocal }}</span>)</span>
+                        <span style="color:#B5B5B5" v-else>重新傳送(<span style="font-size: 12px">{{ reciprocal }}</span>)</span>
                     </button>
                 </div>
                 <input type="hidden" value="" name="recaptcha_response" id="recaptchaResponse">

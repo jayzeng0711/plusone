@@ -264,13 +264,13 @@
                         <div class="login_body_may">
                             <div class="login_body" style="padding: 0;height: 60px;">
                                 <div class="valid_code" style="padding: 0;height: 60px;">
-                                    <div class="valid_code_div">
+                                    <!-- <div class="valid_code_div"> -->
                                         <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()">
-                                    </div>
+                                    <!-- </div> -->
                                     <div :class="codebtndiv" @click.prevent="getcode()">
                                         <button type="button">
                                             <span v-if="nogetcode">獲取驗證碼</span>
-                                            <span style="color:#B5B5B5" v-else>重新傳送(<span>{{ reciprocal }}</span>)</span>
+                                            <span style="color:#B5B5B5" v-else>重新傳送(<span style="font-size: 12px">{{ reciprocal }}</span>)</span>
                                         </button>
                                     </div>
                                 </div>

@@ -98,13 +98,13 @@
             </div>
             <div class="error_message"></div>
             <div class="valid_code">
-                <div class="valid_code_div">
+                <!-- <div class="valid_code_div"> -->
                     <input class="valid_code_div_input" type="text"  name='bank_account'  placeholder="請輸入驗證碼" @click="code_confirm()">
-                </div>
+                <!-- </div> -->
                 <div :class="codebtndiv" @click.prevent="getcode()">
                     <button type="button">
                         <span v-if="nogetcode">獲取驗證碼</span>
-                        <span style="color:#B5B5B5" v-else>重新傳送(<span>{{ reciprocal }}</span>)</span>
+                        <span style="color:#B5B5B5" v-else>重新傳送(<span style="font-size: 12px">{{ reciprocal }}</span>)</span>
                     </button>
                 </div>
             </div>

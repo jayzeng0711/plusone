@@ -87,15 +87,15 @@
                     <div class="settleform_29">認證碼</div>
                     <div class="valid_code_getmoney" style="align-items: initial;">
                         <div>
-                            <div class="valid_code_div" style="margin-bottom: 5px;height:45px;">
-                                <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()">
-                            </div>
+                            <!-- <div class="valid_code_div" style="margin-bottom: 5px;height:45px;"> -->
+                                <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()" style="margin-bottom: 5px;height:45px;">
+                            <!-- </div> -->
                             <div class="settleform_34" v-show="getmonet_error == 4">驗證碼錯誤</div>
                         </div>
                         <div :class="codebtndiv" @click.prevent="getcode()">
                             <button type="button">
                                 <span v-if="nogetcode">獲取驗證碼</span>
-                                <span style="color:#B5B5B5" v-else>重新傳送(<span>{{ reciprocal }}</span>)</span>
+                                <span style="color:#B5B5B5" v-else>重新傳送(<span style="font-size: 12px">{{ reciprocal }}</span>)</span>
                             </button>
                         </div>
                     </div>
@@ -171,15 +171,15 @@
                     <div class="settleform_29">認證碼</div>
                     <div class="valid_code_getmoney" style="align-items: initial;">
                         <div>
-                            <div class="valid_code_div" style="margin-bottom: 5px;height:45px;">
-                                <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()">
-                            </div>
+                            <!-- <div class="valid_code_div" style="margin-bottom: 5px;height:45px;"> -->
+                                <input class="valid_code_div_input" type="text" placeholder="請輸入驗證碼" @click="code_confirm()" style="margin-bottom: 5px;height:45px;">
+                            <!-- </div> -->
                             <div class="settleform_34" v-show="modibankcode == 4">驗證碼錯誤</div>
                         </div>
                         <div :class="codebtndiv" @click.prevent="getcode()">
                             <button type="button">
                                 <span v-if="nogetcode">獲取驗證碼</span>
-                                <span style="color:#B5B5B5" v-else>重新傳送(<span>{{ reciprocal }}</span>)</span>
+                                <span style="color:#B5B5B5" v-else>重新傳送(<span style="font-size: 12px">{{ reciprocal }}</span>)</span>
                             </button>
                         </div>
                     </div>

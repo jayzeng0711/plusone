@@ -265,16 +265,16 @@
                         <i class="fas fa-times"></i>
                     </div>
                     <? if ($this->isLogin): ?>
-                        <div class="mobile_headimg" v-show="isLogin">
+                        <div class="mobile_headimg">
                             <div id="avatar-wrap" class="avatar-wrap">
-                                <img id="avatar-wrap_div" class="avatar-wrap_img" src="https://resource.3uplay.com/user-static/8153f22f-d0cd-4f47-b2fa-7725958673e88571443756589800268.png?d=100x100">
+                                <img id="avatar-wrap_div" class="avatar-wrap_img" src="<?=$this->isLogin->picture?>">
                                 <div id="avatar-wrap_div_status" :class="status_color"></div>
                             </div>
                             <div class="mobile_name">
-                                Jayzeng
+                                <?=$this->isLogin->name?>
                             </div>
                         </div>
-                        <div class="line" v-show="isLogin"></div>
+                        <div class="line"></div>
                     <?php endif; ?>
 
                     <div class="items">
@@ -354,7 +354,7 @@
                         <?php endif; ?>
                        
                         <? if ($this->isLogin ==  false): ?>
-                        <div class="item" v-show="!isLogin" @click="openlogonpop()">
+                        <div class="item" @click="openlogonpop()">
                             <div class="itemimg">
                                 <img src="<?=base_url()?>plusone88/assets/img/icon-home@2x.png">
                             </div>
@@ -365,7 +365,7 @@
 
                         <?php else: ?>
                             
-                        <div class="item" v-show="isLogin">
+                        <div class="item" @click="logoutpop()">
                             <div class="itemimg">
                                 <img src="<?=base_url()?>plusone88/assets/img/icon-home@2x.png">
                             </div>
