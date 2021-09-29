@@ -51,7 +51,7 @@
                                 <?endif;?>
                             </div>
                             <div class="dramic_21">
-                                <img class="dramic_22" src="/plusone88/assets/img/Group 120@2x.png" alt="">
+                                <img class="dramic_22" @click.stop="openbigpre()" src="/plusone88/assets/img/Group 120@2x.png" alt="">
                             </div>
                             <div class="dramic_25">
                                 <div class="dramic_23">

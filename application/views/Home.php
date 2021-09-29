@@ -15,6 +15,11 @@
                 <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
             </div>
         </div>
+        <div class="infoCarousel owl-carousel owl-theme">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7fQr6HzzyWs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
     </div>
     <? if ($this->isLogin ==  false): ?>
         <div class="alotofskills">
@@ -77,7 +82,7 @@
                     </div>
                 </div>
             </a>
-            <a href="http://tt.live-pk.com/" class="mobile_size"  target="_blank">
+            <a href="https://www.plusone88.com/livepk/login" class="mobile_size"  target="_blank">
                 <div class="rank">
                     <div>
                         <div class="order_word">

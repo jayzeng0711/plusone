@@ -50,7 +50,7 @@
                 <a href="<?=base_url()?>recharge/storedvalue">
                     <div class="balance">
                         <img width="24" height="24" src="<?=base_url()?>plusone88/assets/img/icon-money@2x.png">
-                        <span class="nowmoney">25</span>
+                        <span class="nowmoney"><?=$this->isLogin->g_point?></span>
                         <div class="moneyplus">
                             <img src="<?=base_url()?>plusone88/assets/img/Group 474@2x.png" alt="">
                         </div>
