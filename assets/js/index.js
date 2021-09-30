@@ -14,9 +14,8 @@ var vm = new Vue({
     el: "#app",
     data() {
         return {
-            name: '',
             manysocail: "",
-            phonesuccess: "+886912345678",
+            phonesuccess: "",
             pcoin: 1250,
             gcoin: 1000,
             taicoin: 0,
@@ -83,95 +82,7 @@ var vm = new Vue({
                 },
          
             ],
-            // activity_lists: [
-            //     {
-            //         "link": "/plusone88/plusone/myorder",
-            //         "img": "/plusone88/assets/img/icon-orderlist@2x.png",
-            //         "title": "我的約單",
-            //     },
-            //     {
-            //         "link": "/plusone88/plusone/balance",
-            //         "img": "/plusone88/assets/img/icon-wallet@2x.png",
-            //         "title": "餘額",
-            //     },
-            //     {
-            //         "link": "/plusone88/plusone/cancoupon",
-            //         "img": "/plusone88/assets/img/icon-coupon@2x.png",
-            //         "title": "可用優惠券",
-            //     },
-            //     {
-            //         "link": "/plusone88/plusone/settle",
-            //         "img": "/plusone88/assets/img/icon-apply@2x.png",
-            //         "title": "申請入駐",
-            //     },
-            //     {
-            //         "link": "/plusone88/plusone/editdata",
-            //         "img": "/plusone88/assets/img/icon-edit@2x.png",
-            //         "title": "編輯資料",
-            //     },
-            //     {
-            //         "link": "/plusone88/plusone/account",
-            //         "img": "/plusone88/assets/img/icon-setting@2x.png",
-            //         "title": "設置",
-            //     },
-            //     {
-            //         "link": "yahoo.com.tw",
-            //         "img": "/plusone88/assets/img/icon-service@2x.png",
-            //         "title": "聯繫客服",
-            //     },
-            // ],
-            activity_lists: [
-                {
-                    "link": "/plusone/myorder",
-                    "img": "/plusone88/assets/img/icon-orderlist@2x.png",
-                    "title": "我的約單",
-                },
-                {
-                    "link": "/plusone/balance",
-                    "img": "/plusone88/assets/img/icon-wallet@2x.png",
-                    "title": "餘額",
-                },
-                {
-                    "link": "/plusone/cancoupon",
-                    "img": "/plusone88/assets/img/icon-coupon@2x.png",
-                    "title": "可用優惠券",
-                },
-                {
-                    "link": "/member/settle",
-                    "img": "/plusone88/assets/img/icon-apply@2x.png",
-                    "title": "申請入駐",
-                },
-                {
-                    "link": "/member/dataskill",
-                    "img": "/plusone88/assets/img/icon-edit@2x.png",
-                    "title": "資料及技能管理",
-                },
-                {
-                    "link": "/plusone/report",
-                    "img": "/plusone88/assets/img/icon-report@2x.png",
-                    "title": "收益報表",
-                },
-                {
-                    "link": "/member/bankcard",
-                    "img": "/plusone88/assets/img/bankcard@2x.png",
-                    "title": "銀行卡設定",
-                },
-                {
-                    "link": "/member/getmoney",
-                    "img": "/plusone88/assets/img/icon-withdrawal@2x.png",
-                    "title": "提款",
-                },
-                {
-                    "link": "/plusone/account",
-                    "img": "/plusone88/assets/img/icon-setting@2x.png",
-                    "title": "設置",
-                },
-                {
-                    "link": "https://www.plusone88.com/",
-                    "img": "/plusone88/assets/img/icon-service@2x.png",
-                    "title": "聯繫客服",
-                },
-            ],
+            activity_lists: [],
             phonemaskBg: 0,
             preson_data: 0,
             area_code: 886,
@@ -301,51 +212,14 @@ var vm = new Vue({
             foreverdeletcacc: 0,
             openmes: 0,
             remnant: 0,
-            list: [], //用于结构渲染
-            allArr: [],  //存储每次上传的所有flie，
+            list: [],
+            allArr: [],
             deletearr: [],
             limitNum: 1, //限制数量
             replypop: 0,
-            singlemessage: 
-                {
-                    // "id": 1,
-                    // "img": "/plusone88/assets/img/img-profile@2x.png",
-                    // "name": "kevin",
-                    // "time": "1小時前",
-                    // "messageimg": "/plusone88/assets/img/Group 195@2x.png",
-                    // "message": "嗨 大家好久不見～嗨 大家好久不見～嗨 大家好久不見～",
-                    // "skill": "傳說對決 150幣/半小時",
-                    // "good": "15",
-                    // "messagenums": "15",
-                    // "mesper": [
-                    //     {
-                    //         "id": 1,
-                    //         "img": "img-profile@2x.png",
-                    //         "name": "Sheena Chen",
-                    //         "tag": "player-tag@2x.png",
-                    //         "message": "下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！下次一起玩！",
-                    //         "time": "1小時前",
-                    //     },
-                    //     {
-                    //         "id": 1,
-                    //         "img": "img-profile@2x.png",
-                    //         "name": "Sheddd",
-                    //         "tag": "player-tag@2x.png",
-                    //         "message": "、玩！",
-                    //         "time": "2小時前",
-                    //     },
-                    // ],
-                },
+            singlemessage: {},
             dramic_27: "",
-            replys: [
-                // {
-                //     "id":1,
-                //     "quname": "Sheena Chen",
-                //     "anname": "立杰",
-                //     "message": "下次一起玩",
-                //     "time": "1小時前",
-                // },
-            ],
+            replys: [],
             small_present: 0,
             smallprenum: 1,
             bigprepop: 0,
@@ -419,38 +293,6 @@ var vm = new Vue({
             new_psd_again: "",
             succcodepop: 0,
             dataskill: 1,
-            manyskill: [
-                {
-                    "id": 1,
-                    "img": "Group 1@2x.png",
-                    "name": "激鬥峽谷",
-                    "open": 1
-                },
-                {
-                    "id": 2,
-                    "img": "Group 1@2x.png",
-                    "name": "激鬥峽谷",
-                    "open": 1
-                },
-                {
-                    "id": 3,
-                    "img": "Group 1@2x.png",
-                    "name": "激鬥峽谷",
-                    "open": 1
-                },
-                {
-                    "id": 4,
-                    "img": "Group 1@2x.png",
-                    "name": "激鬥峽谷",
-                    "open": 1
-                },
-                {
-                    "id": 5,
-                    "img": "Group 1@2x.png",
-                    "name": "激鬥峽谷",
-                    "open": 1
-                }
-            ],
             togeedit: 0,
             editskillprice: "100幣/局",
             singrank: "100幣/局",
@@ -495,15 +337,12 @@ var vm = new Vue({
         this.getsingleskill();
         this.getdataskill();
         this.getallcoin();
+        this.getmenus();
     },
-    
     computed: {
 
     },
     methods: {
-        isLoginfun() {
-            //登入api
-        },
         async getSkill(){
             return await $.post("https://www.plusone88.com/api/haveskill", {
                     
@@ -608,6 +447,16 @@ var vm = new Vue({
                 }
             })
         },
+        async getmenus(){
+            return await $.get("https://www.plusone88.com/api/getmenu", {
+                    
+            })
+            .done(function (result) {
+                result = JSON.parse(result)
+                console.log(result)
+                vm.activity_lists = result;
+            })
+        },
         openlogonpop() {
             this.loginpop = 1;
             this.maskBg = 1;
@@ -679,6 +528,42 @@ var vm = new Vue({
                 }
             })
         },
+        getcodeaccount(){
+            if (this.codebtndiv['codebtndiv_get']) {
+                return false;
+            }
+            
+            var MobileReg = /^(09)[0-9]{8}$/;
+            var phonenumber = (this.phonenumber.match(MobileReg)) ? true : false;
+            if (this.phonenumber == "") {
+                $('.error_message').text('請輸入手機號碼');
+                $('.bind_error').text('請綁定您的手機號碼');
+                return false;
+            }
+            if (!phonenumber) {
+                $('.error_message').text('請輸入正確手機格式');
+                return false;
+            }
+
+            $.post("https://www.plusone88.com/api/regmobile", {
+                "phone": vm.phonenumber,
+                'areacode': vm.area_code,
+            })
+            .done(function (result) {
+                result = JSON.parse(result);
+                console.log(result['status'])
+                if(result['status']){
+                    vm.nogetcode = false;
+                    vm.codebtndiv['codebtndiv'] = false;
+                    vm.codebtndiv['codebtndiv_get'] = true;
+                    $('.error_message').text('驗證碼發送成功');
+                    vm.setTimeoutFun();
+                }else{
+                    $('.error_message').text('驗證碼發送失敗');
+                    return false;
+                }
+            })
+        },
         getcodechange() {
             this.nogetcode = false;
             this.codebtndiv['codebtndiv'] = false;
@@ -689,7 +574,7 @@ var vm = new Vue({
             $('.leftfunc_mobile').slideUp(400);
         },
         //立即登入檢查驗證碼api
-        rightnow_login() {
+        rightnow_login(e) {
             //驗證碼錯誤的顯示狀態
             
             // if (this.phonenumber == "") {

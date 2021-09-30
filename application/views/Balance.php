@@ -16,14 +16,16 @@
             </div>
             <div class="balance_wrap_bot">
                 <div class="balance_wrap_bot_one">P幣</div>
-                <div class="balance_wrap_bot_two">{{ gacoin | money }}</div>
+                <div class="balance_wrap_bot_two">{{ <?=$this->member_model->getUser()->g_point?> | money }}</div>
+                <a href="/recharge/storedvalue">
                 <div class="balance_wrap_bot_three">儲值</div>
-                <a href="/plusone/change_gcoin">
+                </a>
+                <a href="/member/change_gcoin">
                     <div class="balance_wrap_bot_four">兌換G幣</div>
                 </a>
             </div>
         </div>
-        <div class="balance_wrap_inner">
+        <!-- <div class="balance_wrap_inner">
             <div class="balance_wrap_inner_t">
                 <div class="balance_wrap_inner_t_d">
 
@@ -35,12 +37,12 @@
             </div>
             <div class="balance_wrap_bot">
                 <div class="balance_wrap_bot_one">G幣</div>
-                <div class="balance_wrap_bot_two">{{ gacoin | money }}</div>
+                <div class="balance_wrap_bot_two">{{ <?=$this->member_model->getUser()->pk_point?> | money }}</div>
                 <div class="balance_wrap_bot_three" style="opacity: 0;cursor: default;">兌換G幣</div>
-                <a href="/plusone/trade">
+                <a href="/memner/trade">
                     <div class="balance_wrap_bot_four">交易</div>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

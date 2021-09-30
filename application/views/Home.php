@@ -1,4 +1,28 @@
 
+<!-- pop up -->
+
+<a id='parentIframe' href="https://www.youtube.com/watch?v=7fQr6HzzyWs&autoplay=1" data-fancybox></a>
+
+
+<script type="text/javascript">
+//一秒後模擬點擊
+  setTimeout(function() {
+    // IE
+    if(document.all) {
+      document.getElementById("parentIframe").click();
+    }
+    // 其它瀏覽器
+    else {
+      var e = document.createEvent("MouseEvents");
+      e.initEvent("click", true, true);
+      document.getElementById("parentIframe").dispatchEvent(e);
+    }
+  }, 1000);
+</script>
+
+<!-- pop up end-->
+
+
 <div class="rightfunc">
     <div class="stepBox">
         <div class="infoCarousel owl-carousel owl-theme">
@@ -15,11 +39,7 @@
                 <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
             </div>
         </div>
-        <div class="infoCarousel owl-carousel owl-theme">
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7fQr6HzzyWs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        </div>
     </div>
     <? if ($this->isLogin ==  false): ?>
         <div class="alotofskills">

@@ -16,9 +16,9 @@
             </div>
             <div class="gcoin_wrap_bot">
                 <div class="gcoin_wrap_bot_one">P幣</div>
-                <div class="gcoin_wrap_bot_two">{{ pcoin | money }}</div>
+                <div class="gcoin_wrap_bot_two">{{ <?=$this->member_model->getUser()->g_point?> | money }}</div>
                 <div class="gcoin_wrap_bot_three">Ｇ幣</div>
-                <div class="gcoin_wrap_bot_four">{{ gcoin | money }}</div>
+                <div class="gcoin_wrap_bot_four">{{ <?=$this->member_model->getUser()->pk_point?> | money }}</div>
             </div>
         </div>
         <div class="balance_wrap_inner">

@@ -1,4 +1,4 @@
-<body>
+<body >
     <div id="app" v-cloak @click="all_show($event)">
         <!-- 未登入畫面 -->
         <div class="header" v-show="!isLogin">
