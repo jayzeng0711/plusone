@@ -56,7 +56,7 @@ var vm = new Vue({
             area_code: 886,
             user: {
                 id: "",
-                name: "Sheena Chen",
+                name: "",
                 email: "",
                 token: "",
                 hasAgreed: null,
@@ -218,14 +218,16 @@ var vm = new Vue({
     },
     created() {
         this.getSkill();
-        this.getAllSkill();
-        this.NologingetAllSkill();
         this.getsingleskill();
-        this.getdataskill();
-        this.getallcoin();
         this.getmenus();
         this.getcountry();
+
+        this.getAllSkill();
+        this.NologingetAllSkill();
+        this.getdataskill();
+        this.getallcoin();
         this.getcoupons();
+        this.getwithorder();
     },
     computed: {
 
@@ -269,7 +271,7 @@ var vm = new Vue({
                 })
             })
         },
-        order() {
+        async order() {
             $(function () {
                 let container = $('#reportpagination');
                 container.pagination({
@@ -309,6 +311,10 @@ var vm = new Vue({
                 })
         },
         async getAllSkill() {
+            if(window.location.href != "https://www.plusone88.com/member/skill"){
+                return false;
+            }
+
             return await $.post("https://www.plusone88.com/api/allgames", {
 
             })
@@ -318,6 +324,10 @@ var vm = new Vue({
                 })
         },
         async NologingetAllSkill() {
+            if(window.location.href != "https://www.plusone88.com/plusone/fastorder"){
+                return false;
+            }
+
             return await $.post("https://www.plusone88.com/open/allgames", {
 
             })
@@ -329,14 +339,19 @@ var vm = new Vue({
                 })
         },
         async getsingleskill() {
+            var url = window.location.href;
+            var index = url.lastIndexOf("\/");
+            str = url.substring(0,index+1)
+            if(str != "https://www.plusone88.com/member/editskill/"){
+                return false;
+            }
+
             var id = $('#skillId').val();
             return await $.post("https://www.plusone88.com/api/editskillinfo", {
                 "skillId": id
             })
                 .done(function (result) {
-                    console.log(result)
                     result = JSON.parse(result)
-                    console.log(result)
                     vm.moneey = result['singleprice'];
                     vm.first_money = result['firstprice'];
                     vm.coupon_1 = result['coupon_1'];
@@ -367,6 +382,10 @@ var vm = new Vue({
                 })
         },
         async getallcoin() {
+            if(window.location.href != "https://www.plusone88.com/member/change_gcoin"){
+                return false;
+            }
+
             return await $.get("https://www.plusone88.com/livepk/pointlist", {
 
             })
@@ -377,6 +396,10 @@ var vm = new Vue({
                 })
         },
         async getdataskill() {
+            if(window.location.href != "https://www.plusone88.com/member/dataskill"){
+                return false;
+            }
+
             return await $.get("https://www.plusone88.com/api/getdataskill", {
                 xhrFields: {
                     withCredentials: true
@@ -385,7 +408,6 @@ var vm = new Vue({
             })
                 .done(function (result) {
                     result = JSON.parse(result)
-                    console.log(result)
                     vm.daypp = result['day'];
                     vm.yearpp = result['year'];
                     vm.introduce = result['intro'];
@@ -409,7 +431,6 @@ var vm = new Vue({
             })
                 .done(function (result) {
                     result = JSON.parse(result)
-                    console.log(result)
                     vm.activity_lists = result;
                 })
         },
@@ -423,6 +444,10 @@ var vm = new Vue({
                 })
         },
         async getcoupons() {
+            if(window.location.href != "https://www.plusone88.com/plusone/cancoupon"){
+                return false;
+            }
+
             return await $.get("https://www.plusone88.com/api/getcoupon", {
 
             })
@@ -433,6 +458,10 @@ var vm = new Vue({
                 })
         },
         async getwithorder() {
+            if(window.location.href != "https://www.plusone88.com/member/report"){
+                return false;
+            }
+
             return await $.get("https://www.plusone88.com/api/getwithorder", {
 
             })
@@ -496,7 +525,6 @@ var vm = new Vue({
             })
                 .done(function (result) {
                     result = JSON.parse(result);
-                    console.log(result['status'])
                     if (result['status']) {
                         vm.nogetcode = false;
                         vm.codebtndiv['codebtndiv'] = false;
@@ -536,7 +564,6 @@ var vm = new Vue({
             })
                 .done(function (result) {
                     result = JSON.parse(result);
-                    console.log(result['status'])
                     if (result['status']) {
                         vm.nogetcode = false;
                         vm.codebtndiv['codebtndiv'] = false;
@@ -1487,7 +1514,6 @@ var vm = new Vue({
                 contentType: false,
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data)
                     $('.settleform_21').attr('src', data['url']);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -1532,7 +1558,6 @@ var vm = new Vue({
                 let image = new Image();
                 image.src = this.result;
                 image.onload = function () {
-                    console.log(e.target.result)
                 }
             }
         },
