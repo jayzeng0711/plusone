@@ -2,12 +2,10 @@
 <div class="balance_order_rightfunc">
     <div class="single_skill_0">
         <form action="https://www.plusone88.com/api/editskill" method="post" enctype="multipart/form-data" accept-charset="utf-8" @submit="edit_sklii_submit">
-            <!-- echo在這 -->
             <input type="text" id="skillId"  name="skillId" value="<?=$skillid?>" hidden>
             <div class="single_skill_1">
                 技能編輯-<?=$skill_type['skill_name']?>
             </div>
-            <!-- echo在這 -->
             <div class="single_skill_2">
                 <div class="single_skill_3">
                     價格清單
@@ -77,10 +75,6 @@
                             <img class="settleform_40" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                         </div>
                         <div class="many_prices ranklevel" style="width: 200px;" v-show="playeditredute == 1">
-                            <!-- <div class="prices_list" @click.stop="thislfirsrk('金牌',0)">
-                                金牌
-                                <img id="thislfirsrk_0" class="preset thislfirsrk active" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
-                            </div> -->
                             <div class="prices_list" @click.stop="thislfirsrk('白金',1)">
                                 白金
                                 <img id="thislfirsrk_1" class="preset thislfirsrk" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
@@ -151,5 +145,4 @@
             </div>
         </form>
     </div>
-
 </div>

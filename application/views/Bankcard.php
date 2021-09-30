@@ -4,7 +4,7 @@
         銀行卡設定
     </div>
     <div class="balance_wrap">
-        <div class="balance_wrap_inner" v-if="bankarr.length > 0">
+        <div class="balance_wrap_inner">
             <div class="balance_wrap_bot">
                 <div class="balance_wrap_bot_one" style="flex: inherit;margin-right: 40px;"><img src="/plusone88/assets/img/icon-visacard@2x.png" alt=""></div>
                 <?if($member_bank):?>
@@ -14,7 +14,6 @@
                 <?else:?>
                     <div class="balance_wrap_bot_two" style="flex: inherit;margin-right: 40px;">無</div>
                 <?endif;?>
-                
             </div>
         </div>
         <div class="balance_wrap_inner" style="margin-bottom: 20px;">

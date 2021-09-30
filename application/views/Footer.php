@@ -42,9 +42,9 @@
         <div class="logoutpop_cancel" @click="cancellogout()">
             取消
         </div>
-        <div class="logoutpop_confirm" @click="confirmlogout()">
-            <a href="<?=base_url()?>logout">確定</a>
-        </div>
+        <a href="<?=base_url()?>logout" class="logoutpop_confirm">
+            確定
+        </a>
     </div>
 </div>
 <!-- 手機登入pop -->

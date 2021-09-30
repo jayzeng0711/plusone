@@ -19,14 +19,17 @@
             <div class="order_data_hr_div">
                 <hr class="order_data_hr">
             </div>
-            <div class="myorder_data_title" v-for="(cou,i) in coupon">
-                <div>{{ cou.id }}</div>
-                <div>{{ cou.name}}</div>
-                <div>{{ cou.num }}</div>
-                <div>{{ cou.getdate }}</div>
-                <div>{{ cou.lastdate }}</div>
-                <div v-if="cou.status == 0" style="cursor: pointer;" @click="couponopen(cou.id)">未使用</div>
-                <div v-else style="color: #878787">已使用</div>
+            <div id="data-container"></div>
+            <div id="pagination" style="display: flex;justify-content: center;padding: 20px 0">
+                <!-- <div class="myorder_data_title">
+                    <div>{{ cou.id }}</div>
+                    <div>{{ cou.name}}</div>
+                    <div>{{ cou.num }}</div>
+                    <div>{{ cou.getdate }}</div>
+                    <div>{{ cou.lastdate }}</div>
+                    <div v-if="cou.status == 0" style="cursor: pointer;" @click="couponopen(cou.id)">未使用</div>
+                    <div v-else style="color: #878787">已使用</div>
+                </div> -->
             </div>
             <div class="myorder_data_img_div" v-if="coupon.length == 0">
                 <img class="myorder_data_img" src="/plusone88/assets/img/icon-nocoupon@2x.png" alt="">
@@ -83,7 +86,7 @@
         </div>
     </div>
 </div>
-<div class="logoutpop" v-show="couponpop == 1">
+<div class="logoutpop couponpop" style="display:none">
     <div class="couponpop_text">
         您確認要使用優惠券嗎?
     </div>
@@ -99,4 +102,4 @@
         </div>
     </div>
 </div>
-<div class="logoutmaskBg" v-show="couponpop == 1" @click="couponmaskBgbtn()"></div>
+<div class="logoutmaskBg" style="display:none" @click="couponmaskBgbtn()"></div>

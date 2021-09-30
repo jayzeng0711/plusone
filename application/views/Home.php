@@ -4,7 +4,7 @@
 <a id='parentIframe' href="https://www.youtube.com/watch?v=7fQr6HzzyWs&autoplay=1" data-fancybox></a>
 
 
-<script type="text/javascript">
+<script type="application/javascript">
 //一秒後模擬點擊
   setTimeout(function() {
     // IE

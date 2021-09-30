@@ -18,7 +18,7 @@
             <div class="order_data_hr_div">
                 <hr class="order_data_hr">
             </div>
-            <div class="myorder_data_title" v-for="(r,i) in report">
+            <!-- <div class="myorder_data_title" v-for="(r,i) in report">
                 <div>{{ r.id }}</div>
                 <div>{{ r.ordermember}}</div>
                 <div><a href="" style="color: #4E9FCC">{{ r.played }}</a></div>
@@ -28,7 +28,9 @@
                 <div>{{ r.money | NTDmoney }}</div>
                 <div>{{ r.lostmoney}}</div>
                 <div>{{ r.havemoney | NTDmoney}}</div>
-            </div>
+            </div> -->
+            <div id="reportdata"></div>
+            <div id="reportpagination" style="display: flex;justify-content: center;padding: 20px 0"></div>
         </div>
     </div>
 </div>
