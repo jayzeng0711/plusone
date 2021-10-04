@@ -31,8 +31,8 @@
                     <div v-else style="color: #878787">已使用</div>
                 </div> -->
             </div>
-            <div class="myorder_data_img_div" v-if="coupon.length == 0">
-                <img class="myorder_data_img" src="/plusone88/assets/img/icon-nocoupon@2x.png" alt="">
+            <div class="myorder_data_img_div" v-show="nocoupon == 1">
+                <img class="myorder_data_img" src="/plusone88/assets/img/icon-nocoupon@2.png" alt="">
             </div>
         </div>
 

@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" href="https://images.plusone88.com/css/swiper-bundle.min.css">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="https://www.plusone88.com/plusone88/assets/img/Plus-one_LOGO_200X200.png">
     <link href="https://images.plusone88.com/css/owl.carousel.min.css" rel="stylesheet" />
     <link href="https://images.plusone88.com/css/owl.theme.default.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>

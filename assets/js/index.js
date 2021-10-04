@@ -124,6 +124,7 @@ var vm = new Vue({
             small_present: 0,
             smallprenum: 1,
             bigprepop: 0,
+            bigsinprepop: 0,
             presonmepop: 0,
             rightclicktines: 0,
             personskill: ["語音交流", "英雄聯盟", "激鬥峽谷",
@@ -214,6 +215,7 @@ var vm = new Vue({
             origamerank: 0,
             choiceskill: "請選擇常用技能",
             choiceskillid: "",
+            nocoupon: 0,
         };
     },
     created() {
@@ -245,6 +247,11 @@ var vm = new Vue({
 
                         var dataHtml = '<div>';
                         $.each(data, function (index, item) {
+                            if(vm.coupon.length == 0){
+                                vm.nocoupon = 1;
+                                return false;
+                            }
+
                             if (item.status == 0) {
                                 dataHtml += `<div class="myorder_data_title">
                                 <div>${item.id}</div>
@@ -311,8 +318,17 @@ var vm = new Vue({
                 })
         },
         async getAllSkill() {
-            if(window.location.href != "https://www.plusone88.com/member/skill"){
-                return false;
+            var url = window.location.href;
+            var index = url.lastIndexOf("#");
+            if(index == -1){
+                if(url != "https://www.plusone88.com/member/skill"){
+                    return false;
+                }
+            }else{
+                str = url.substring(0,index)
+                if(str != "https://www.plusone88.com/member/skill"){
+                    return false;
+                }
             }
 
             return await $.post("https://www.plusone88.com/api/allgames", {
@@ -1434,6 +1450,12 @@ var vm = new Vue({
             $('.dramic_88').removeClass("gift");
             $('.specailGift').removeClass("gift");
             $('.specialGiftdate').removeClass("gift");
+        },
+        opensinglebigpre(id){
+            this.bigsinprepop = id;
+        },
+        closesinbigprepop(){
+            this.bigsinprepop = 0
         },
         async presonmessagepage(num, id) {
             if (num == 1) {
