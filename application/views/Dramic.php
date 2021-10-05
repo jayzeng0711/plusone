@@ -1,15 +1,15 @@
 <div class="balance_order_rightfunc">
     <div class="myorder_wrap">
-        <div class="coupon_text" style="width: 1100px">
+        <div class="dramic_text">
             動態
         </div>
         <div class="dramic_11">
             <div class="dramic_4">
                 <div class="dramic_1">
-                    <div class="dramic_2" @click="toggleswitch(1)">
+                    <div class="dramic_2" @click.stop="toggleswitch(1)">
                         推薦
                     </div>
-                    <!-- <div class="dramic_3" @click="toggleswitch(2)">
+                    <!-- <div class="dramic_3" @click.stop="toggleswitch(2)">
                         最近
                     </div> -->
                 </div>
@@ -47,7 +47,7 @@
                             <div class="dramic_21">
                 <div class="dramic_88">
                     <img class="dramic_22" @click.stop="opensinglebigpre(<?=$value['id']?>)" src="/plusone88/assets/img/Group 120@2x.png" alt="">
-                    <div class="dramic_86" v-show="bigsinprepop == <?=$value['id']?>" style="left: -50px;top: -420px;">
+                    <div class="dramic_86" v-show="bigsinprepop == <?=$value['id']?>" style="left: -50px;top: -230px;">
                         <div class="close" @click.stop="closesinbigprepop()">
                             <i class="fas fa-times"></i>
                         </div>
@@ -59,141 +59,16 @@
                         </div>
                         <div class="dramic_94">
                             <div class="dramic_90">
-                                <div class="dramic_89 border" id="present_1" @click.stop="sel_pre_top(1)">
+                                <?foreach ($gift_list as $key => $gift):?>
+                                <div class="dramic_89 border" id="present_<?=$value['id']?>_<?=$gift['id']?>" @click.stop="sel_pre_top(<?=$gift['id']?>,<?=$value['id']?>)">
                                     <div class="dramic_93">
                                         <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
                                     </div>
                                     <div class="dramic_92">
-                                        1 P幣
+                                        <?=$gift['point']?> P幣
                                     </div>
                                 </div>
-                                <div class="dramic_89 border" id="present_2" @click.stop="sel_pre_top(2)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        50 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_3" @click.stop="sel_pre_top(3)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        100 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_4" @click.stop="sel_pre_top(4)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        200 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_5" @click.stop="sel_pre_top(5)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        500 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_6" @click.stop="sel_pre_top(6)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_7" @click.stop="sel_pre_top(7)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        5000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_8" @click.stop="sel_pre_top(8)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        10000 P幣
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="account_7" style="padding: 0px;">
-                            <hr class="account_8">
-                        </div>
-                        <div class="dramic_94">
-                            <div class="dramic_95">
-                                <div class="dramic_89 border_bot" id="present_9" @click.stop="sel_pre_bot(9)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_10" @click.stop="sel_pre_bot(10)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        50 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_11" @click.stop="sel_pre_bot(11)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        100 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_12" @click.stop="sel_pre_bot(12)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        200 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_13" @click.stop="sel_pre_bot(13)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        500 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_14" @click.stop="sel_pre_bot(14)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_15" @click.stop="sel_pre_bot(15)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        5000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_16" @click.stop="sel_pre_bot(16)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        10000 P幣
-                                    </div>
-                                </div>
+                                <?endforeach;?>
                             </div>
                         </div>
                         <div class="dramic_104">
@@ -204,7 +79,7 @@
                                     </div>
                                     <div class="dramic_98">0</div>
                                 </div>
-                                <a href="">
+                                <a href="https://www.plusone88.com/recharge/storedvalue">
                                     <div class="dramic_99">
                                         <div class="dramic_100">
                                             儲值
@@ -220,9 +95,8 @@
                                         <div class="dramic_106">
                                             <img style="min-width: 10px;max-width: 10px;" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                                         </div>
-
-                                        <div class="dramic_107" v-show="small_present == 1">
-                                            <div class="dramic_108" @click="selsmanum(1)">
+                                        <div class="dramic_107" v-show="small_present == 1" style="bottom: 31px;">
+                                            <div class="dramic_108" @click.stop="selsmanum(1)">
                                                 <span class="dramic_109">
                                                     1
                                                 </span>
@@ -230,7 +104,7 @@
                                                     一心一意
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(10)">
+                                            <div class="dramic_108" @click.stop="selsmanum(10)">
                                                 <span class="dramic_109">
                                                     10
                                                 </span>
@@ -238,7 +112,7 @@
                                                     十分喜歡
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(99)">
+                                            <div class="dramic_108" @click.stop="selsmanum(99)">
                                                 <span class="dramic_109">
                                                     99
                                                 </span>
@@ -246,7 +120,7 @@
                                                     長長久久
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(188)">
+                                            <div class="dramic_108" @click.stop="selsmanum(188)">
                                                 <span class="dramic_109">
                                                     188
                                                 </span>
@@ -254,7 +128,7 @@
                                                     要抱抱
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(520)">
+                                            <div class="dramic_108" @click.stop="selsmanum(520)">
                                                 <span class="dramic_109">
                                                     520
                                                 </span>
@@ -262,7 +136,7 @@
                                                     我愛你
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(1314)">
+                                            <div class="dramic_108" @click.stop="selsmanum(1314)">
                                                 <span class="dramic_109">
                                                     1314
                                                 </span>
@@ -271,9 +145,8 @@
                                                 </span>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <div class="dramic_103">送禮</div>
+                                    <div class="dramic_103" @click.stop="donate(<?=$value['id']?>)">送禮</div>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +195,7 @@
                         <img class="dramic_35" src="<?=$this->isLogin->picture?>" alt="">
                     </div>
                     <div class="dramic_36">
-                        <?=$this->isLogin->fakename?>
+                        <?=$this->isLogin->name?>
                     </div>
                     <div class="dramic_37" @click.stop="opmespop(1)">
                         <img class="dramic_38" src="/plusone88/assets/img/icon-upload@2x.png" alt="">
@@ -406,7 +279,7 @@
 </div>
 
 <div class="dramic_45" v-show="messagepop == 1">
-    <div class="close" @click="opmespop(2)">
+    <div class="close" @click.stop="opmespop(2)">
         <i class="fas fa-times"></i>
     </div>
     <div class="dramic_46">
@@ -420,7 +293,7 @@
             <img class="dramic_7" src="<?if ($this->isLogin){ echo $this->isLogin->picture;}?>" alt="" style="border-radius: 50%;">
         </div>
         <div class="dramic_8">
-            <div class="dramic_9"><?if ($this->isLogin){ echo $this->isLogin->fakename;}?></div>
+            <div class="dramic_9"><?if ($this->isLogin){ echo $this->isLogin->name;}?></div>
         </div>
     </div>
     <form method="POST" action="https://www.plusone88.com/api/dramic" @submit="postdramic" enctype="multipart/form-data" accept-charset="utf-8">
@@ -430,7 +303,7 @@
         <div class="dramic_61" v-if="list.length>0" v-cloak>
             <div v-for="(v,i) in list" :key="i" id="put_images_div_1" class="put_images_div">
                 <img id="put_images_1" class="put_images" :src="v.src" alt="">
-                <div class="imgclose" @click="delImg(i)">
+                <div class="imgclose" @click.stop="delImg(i)">
                     <i class="fas fa-times"></i>
                 </div>
             </div>
@@ -444,15 +317,15 @@
             </div>
         </div>
         <div class="dramic_55">
-            <div class="dramic_56" @click="messageimages()">
+            <div class="dramic_56" @click.stop="messageimages()">
                 <img class="dramic_7" src="/plusone88/assets/img/icon-uploadphoto@2x.png" alt="" style="border-radius: 0;">
             </div>
             <input type="file" class="messageinput" @change="imagepro()" id="messageinput" name="file" accept="image/png,image/jpg,image/gif,image/jpeg,image/webp">
             <div class="price_form" @click.stop="openPrices()" style="padding: 0;margin-bottom: 0;width: 60%;">
-                <div style="width: 300px">
+                <div class="dramicpostskill">
                     {{ choiceskill }}
                 </div>
-                <div class="many_prices" v-show="openprice == 1" style="width: 280px;bottom: 40px;height: 150px;">
+                <div class="many_prices dramic_skills" v-show="openprice == 1">
                     <div class="prices_list" @click.stop="thisskill(list.title,list.id)" v-for="list in haveSkill">
                         {{ list.title }}
                         <img :id="'preset_'+list.id" class="preset" src="/plusone88/assets/img/icon-preset@2x.png" alt="">
@@ -497,7 +370,7 @@
         <div class="dramic_70">{{ singlemessage.skill }}</div>
     </div>
     <div class="dramic_18">
-        <div class="dramic_25" style="margin-left: 0;" @click="message(4)">
+        <div class="dramic_25" style="margin-left: 0;" @click.stop="message(4)">
             <div class="dramic_23">
                 <img class="dramic_24" src="/plusone88/assets/img/icon-edit@2x.png" alt="">
             </div>
@@ -513,7 +386,7 @@
             <div class="dramic_21">
                 <div class="dramic_88">
                     <img class="dramic_22" @click.stop="openbigpre()" src="/plusone88/assets/img/Group 120@2x.png" alt="">
-                    <div class="dramic_86" v-show="bigprepop == 1">
+                    <div class="dramic_86" v-show="bigprepop == 1" style="top: -273px;">
                         <div class="close" @click.stop="closebigprepop()">
                             <i class="fas fa-times"></i>
                         </div>
@@ -525,141 +398,16 @@
                         </div>
                         <div class="dramic_94">
                             <div class="dramic_90">
-                                <div class="dramic_89 border" id="present_1" @click="sel_pre_top(1)">
+                            <?foreach ($gift_list as $key => $gift):?>
+                                <div class="dramic_89 border" id="presentbot_<?=$gift['id']?>" @click.stop="sel_pre_top_bot(<?=$gift['id']?>)">
                                     <div class="dramic_93">
                                         <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
                                     </div>
                                     <div class="dramic_92">
-                                        1 P幣
+                                        <?=$gift['point']?> P幣
                                     </div>
                                 </div>
-                                <div class="dramic_89 border" id="present_2" @click="sel_pre_top(2)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        50 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_3" @click="sel_pre_top(3)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        100 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_4" @click="sel_pre_top(4)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        200 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_5" @click="sel_pre_top(5)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        500 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_6" @click="sel_pre_top(6)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_7" @click="sel_pre_top(7)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        5000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border" id="present_8" @click="sel_pre_top(8)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-money@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        10000 P幣
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="account_7" style="padding: 0px;">
-                            <hr class="account_8">
-                        </div>
-                        <div class="dramic_94">
-                            <div class="dramic_95">
-                                <div class="dramic_89 border_bot" id="present_9" @click="sel_pre_bot(9)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_10" @click="sel_pre_bot(10)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        50 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_11" @click="sel_pre_bot(11)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        100 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_12" @click="sel_pre_bot(12)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        200 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_13" @click="sel_pre_bot(13)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        500 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_14" @click="sel_pre_bot(14)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        1000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_15" @click="sel_pre_bot(15)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        5000 P幣
-                                    </div>
-                                </div>
-                                <div class="dramic_89 border_bot" id="present_16" @click="sel_pre_bot(16)">
-                                    <div class="dramic_93">
-                                        <img class="dramic_91" src="/plusone88/assets/img/icon-greenbean@2x.png" alt="">
-                                    </div>
-                                    <div class="dramic_92">
-                                        10000 P幣
-                                    </div>
-                                </div>
+                                <?endforeach;?>
                             </div>
                         </div>
                         <div class="dramic_104">
@@ -670,7 +418,7 @@
                                     </div>
                                     <div class="dramic_98">0</div>
                                 </div>
-                                <a href="">
+                                <a href="https://www.plusone88.com/recharge/storedvalue">
                                     <div class="dramic_99">
                                         <div class="dramic_100">
                                             儲值
@@ -686,9 +434,8 @@
                                         <div class="dramic_106">
                                             <img style="min-width: 10px;max-width: 10px;" src="/plusone88/assets/img/icon-blackarrow@2x.png" alt="">
                                         </div>
-
                                         <div class="dramic_107" v-show="small_present == 1">
-                                            <div class="dramic_108" @click="selsmanum(1)">
+                                            <div class="dramic_108" @click.stop="selsmanum(1)">
                                                 <span class="dramic_109">
                                                     1
                                                 </span>
@@ -696,7 +443,7 @@
                                                     一心一意
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(10)">
+                                            <div class="dramic_108" @click.stop="selsmanum(10)">
                                                 <span class="dramic_109">
                                                     10
                                                 </span>
@@ -704,7 +451,7 @@
                                                     十分喜歡
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(99)">
+                                            <div class="dramic_108" @click.stop="selsmanum(99)">
                                                 <span class="dramic_109">
                                                     99
                                                 </span>
@@ -712,7 +459,7 @@
                                                     長長久久
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(188)">
+                                            <div class="dramic_108" @click.stop="selsmanum(188)">
                                                 <span class="dramic_109">
                                                     188
                                                 </span>
@@ -720,7 +467,7 @@
                                                     要抱抱
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(520)">
+                                            <div class="dramic_108" @click.stop="selsmanum(520)">
                                                 <span class="dramic_109">
                                                     520
                                                 </span>
@@ -728,7 +475,7 @@
                                                     我愛你
                                                 </span>
                                             </div>
-                                            <div class="dramic_108" @click="selsmanum(1314)">
+                                            <div class="dramic_108" @click.stop="selsmanum(1314)">
                                                 <span class="dramic_109">
                                                     1314
                                                 </span>
@@ -739,7 +486,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="dramic_103">送禮</div>
+                                    <div class="dramic_103" @click.stop="donate(singlemessage.id)">送禮</div>
                                 </div>
                             </div>
                         </div>
@@ -787,7 +534,7 @@
                 <div class="dramic_10" style="text-align:left;margin-right: 40px;">
                     {{ m.time }}
                 </div>
-                <!-- <div class="dramic_80" @click="openreply(1)">
+                <!-- <div class="dramic_80" @click.stop="openreply(1)">
                     回覆
                 </div> -->
             </div>
@@ -795,10 +542,10 @@
                 <textarea class="dramic_28" name="" id="" rows="3" v-model="replytext" maxlength="140"></textarea>
             </div>
             <div class="edit_div_17" style="margin-bottom: 10px;" v-show="replypop == 1">
-                <div class="edit_div_18" @click="openreply(0)">
+                <div class="edit_div_18" @click.stop="openreply(0)">
                     取消
                 </div>
-                <div class="edit_div_19" @click="replymessage(m.name)">
+                <div class="edit_div_19" @click.stop="replymessage(m.name)">
                     提交
                 </div>
             </div>
@@ -810,8 +557,20 @@
             </div>
         </div>
     </div>
-
 </div>
 <!-- 彈出 -->
+<!-- 贈禮視窗 -->
+<div class="logoutpop" v-show="presentpop == 1">
+    <div style="margin-bottom: 40px;">
+        {{ donatemessage }}
+    </div>
+    <div class="logoutpop_div_wrap" @click.stop="presentpop = 0">
+        <button class="logoutpop_confirm">
+            確定
+        </button>
+    </div>
+</div>
+<!-- 贈禮視窗 -->
 <div class="logoutmaskBg" v-show="presonmepop == 1" @click.stop="presonmessagepage(0)"></div>
-<div class="logoutmaskBg" v-show="messagepop == 1" @click="opmespop(2)"></div>
+<div class="logoutmaskBg" v-show="messagepop == 1" @click.stop="opmespop(2)"></div>
+<div class="logoutmaskBg" v-show="presentpop == 1" @click.stop="presentpop = 0"></div>

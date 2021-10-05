@@ -39,7 +39,6 @@
                 <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
             </div>
         </div>
-
     </div>
     <? if ($this->isLogin ==  false): ?>
         <div class="alotofskills">

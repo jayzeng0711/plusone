@@ -515,13 +515,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dialoag_39">
-                            <textarea class="dialoag_40" name="" id="" cols="30" rows="5" placeholder="請輸入內容"></textarea>
-                        </div>
-                        <div class="dialoag_41">
-                            <div class="dialoag_42">按Enter鍵發送</div>
-                            <div class="dialoag_43">發送</div>
-                        </div>
+                        <form onsubmit="onSubmit(); return false;">
+                            <div class="dialoag_39">
+                                <textarea class="dialoag_40" name="" id="textarea" cols="30" rows="5" placeholder="請輸入內容"></textarea>
+                            </div>
+                            <div class="dialoag_41">
+                                <div class="dialoag_42">按Enter鍵發送</div>
+                                <button type="submit" class="dialoag_43">發送</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
