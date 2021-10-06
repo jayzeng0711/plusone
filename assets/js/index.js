@@ -220,6 +220,7 @@ var vm = new Vue({
             presentpop: 0,
             btnlock: 0,
             donatemessage: "",
+            client_list: {},
         };
     },
     created() {
@@ -234,6 +235,7 @@ var vm = new Vue({
         this.getallcoin();
         this.getcoupons();
         this.getwithorder();
+        this.connect();
     },
     computed: {
 
@@ -2128,6 +2130,98 @@ var vm = new Vue({
 
             })(window);
         },
+        connect() {
+            // 创建websocket
+            ws = new WebSocket("wss://sockets.funmily.com/plusone");
+            // 当socket连接打开时，输入用户名
+            ws.onopen = this.onopen;
+            // 当有消息时根据消息类型显示不同信息
+            ws.onmessage = this.onmessage; 
+            ws.onclose = function() {
+            //    console.log("连接关闭，定时重连");
+               connect();
+            };
+            ws.onerror = function() {
+                // console.log("出现错误");
+            };
+         },
+         onopen() {
+            $.get("https://www.plusone88.com/api/userinfo", {
+
+                })
+            .done(function (result) {
+                result = JSON.parse(result)
+                if(result.status === false){
+                    return false
+                }
+
+                if(result.uid != ""){
+                    var login_data = '{"type":"login","client_img":"'+result.picture+'","client_name":"'+result.fakename+'","room_id":1}';
+                    ws.send(login_data);
+                }
+            })
+        },
+        onmessage(e) {
+            var data = JSON.parse(e.data);
+            switch(data['type']){
+                // 登录 更新用户列表
+                case 'login':
+                    if(data.client_list == undefined){
+                        var loginid = data.client_id;
+                        var loginimg = data.client_img;
+                        var loginname = data.client_name;
+                        Vue.set(vm.client_list, loginid, {
+                            'image':loginimg,
+                            'name':loginname
+                        })
+                    }else{
+                        vm.client_list = data.client_list;
+                    }
+                    break;
+                // 发言
+                case 'say':
+                    //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
+                    vm.say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
+                    break;
+                // 用户退出 更新用户列表
+                case 'logout':
+                    //{"type":"logout","client_id":xxx,"time":"xxx"}
+                    // vm.say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
+                    // delete client_list[data['from_client_id']];
+                    // vm.flush_client_list();
+                    var logoutid = data.from_client_id;
+                    this.$delete(vm.client_list, logoutid)
+            }
+        },
+        onSubmit(e) {
+            var input = document.getElementById("textarea");
+            var to_client_id = 'all';
+            ws.send('{"type":"say","to_client_id":"'+to_client_id+'","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
+            input.value = "";
+            input.focus();
+            e.preventDefault();
+            return false;
+        },
+        flush_client_list(){
+            $("#client_list").val('all');
+        },
+        say(from_client_id, from_client_name, content, time){
+            //解析新浪微博图片
+            content = content.replace(/(http|https):\/\/[\w]+.sinaimg.cn[\S]+(jpg|png|gif)/gi, function(img){
+                return "<a target='_blank' href='"+img+"'>"+"<img src='"+img+"'>"+"</a>";}
+            );
+    
+            //解析url
+            content = content.replace(/(http|https):\/\/[\S]+/gi, function(url){
+                if(url.indexOf(".sinaimg.cn/") < 0)
+                    return "<a target='_blank' href='"+url+"'>"+url+"</a>";
+                else
+                    return url;
+            }
+            );
+    
+            // $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+        }
     }
 });
 
@@ -2158,152 +2252,151 @@ function couponopen(id) {
     $('.logoutmaskBg').css('display', 'block')
 }
 
-if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
-    // 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
-    WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
-    // 开启flash的websocket debug
-    WEB_SOCKET_DEBUG = true;
-    var ws, name, client_list={},room_id,client_id;
+// if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
+//     // 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
+//     WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
+//     // 开启flash的websocket debug
+//     WEB_SOCKET_DEBUG = true;
+//     var ws, name, client_list={},room_id,client_id;
 
-    room_id = getQueryString('room_id')?getQueryString('room_id'):1;
+    // room_id = getQueryString('room_id')?getQueryString('room_id'):1;
 
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    } 
-    connect()   
+    // function getQueryString(name) {
+    //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    //     var r = window.location.search.substr(1).match(reg);
+    //     if (r != null) return unescape(r[2]); return null;
+    // } 
+    
     // 连接服务端
-    function connect() {
-       // 创建websocket
-       ws = new WebSocket("wss://sockets.funmily.com/plusone");
-       // 当socket连接打开时，输入用户名
-       ws.onopen = onopen;
-       // 当有消息时根据消息类型显示不同信息
-       ws.onmessage = onmessage; 
-       ws.onclose = function() {
-    	  console.log("连接关闭，定时重连");
-          connect();
-       };
-       ws.onerror = function() {
-     	  console.log("出现错误");
-       };
-    }
+    // function connect() {
+    //    // 创建websocket
+    //    ws = new WebSocket("wss://sockets.funmily.com/plusone");
+    //    // 当socket连接打开时，输入用户名
+    //    ws.onopen = onopen;
+    //    // 当有消息时根据消息类型显示不同信息
+    //    ws.onmessage = onmessage; 
+    //    ws.onclose = function() {
+    // 	  console.log("连接关闭，定时重连");
+    //       connect();
+    //    };
+    //    ws.onerror = function() {
+    //  	  console.log("出现错误");
+    //    };
+    // }
 
     // 连接建立时发送登录信息
-    function onopen()
-    {
-        $.get("https://www.plusone88.com/api/userinfo", {
+    // function onopen()
+    // {
+    //     $.get("https://www.plusone88.com/api/userinfo", {
 
-            })
-                .done(function (result) {
-                    result = JSON.parse(result)
-                    var login_data = '{"type":"login","client_img":"'+result.picture+'","client_name":"'+result.fakename+'","room_id":'+room_id+'}';
-                    console.log("websocket握手成功，发送登录数据:"+login_data);
-                    ws.send(login_data);
-                })
-        // 登录
+    //         })
+    //             .done(function (result) {
+    //                 result = JSON.parse(result)
+    //                 var login_data = '{"type":"login","client_img":"'+result.picture+'","client_name":"'+result.fakename+'","room_id":'+room_id+'}';
+    //                 console.log("websocket握手成功，发送登录数据:"+login_data);
+    //                 ws.send(login_data);
+    //             })
+    //     // 登录
         
-    }
+    // }
 
     // 服务端发来消息时
-    function onmessage(e)
-    {
-        console.log(e.data);
-        var data = JSON.parse(e.data);
-        switch(data['type']){
-            // 服务端ping客户端
-            case 'ping':
-                ws.send('{"type":"pong"}');
-                break;;
-            // 登录 更新用户列表
-            case 'login':
-                var client_name = data['client_name'];
-                if(data['client_list'])
-                {
-                    client_id = data['client_id'];
-                    client_name = '你';
-                    client_list = data['client_list'];
-                }
-                else
-                {
-                    client_list[data['client_id']] = data['client_name']; 
-                }
+    // function onmessage(e) {
+    //     console.log(e.data);
+    //     var data = JSON.parse(e.data);
+    //     switch(data['type']){
+    //         // 服务端ping客户端
+    //         case 'ping':
+    //             ws.send('{"type":"pong"}');
+    //             break;;
+    //         // 登录 更新用户列表
+    //         case 'login':
+    //             var client_name = data['client_name'];
+    //             if(data['client_list'])
+    //             {
+    //                 client_id = data['client_id'];
+    //                 client_name = '你';
+    //                 client_list = data['client_list'];
+    //             }
+    //             else
+    //             {
+    //                 client_list[data['client_id']] = data['client_name']; 
+    //             }
 
-                say(data['client_id'], data['client_name'],  client_name+' 加入了聊天室', data['time']);
+    //             say(data['client_id'], data['client_name'],  client_name+' 加入了聊天室', data['time']);
 
-                flush_client_list();
-                console.log(data['client_name']+"登录成功");
-                break;
-            // 发言
-            case 'say':
-                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
-                say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
-                break;
-            // 用户退出 更新用户列表
-            case 'logout':
-                //{"type":"logout","client_id":xxx,"time":"xxx"}
-                say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
-                delete client_list[data['from_client_id']];
-                flush_client_list();
-        }
-    }
+    //             flush_client_list();
+    //             console.log(data['client_name']+"登录成功");
+    //             break;
+    //         // 发言
+    //         case 'say':
+    //             //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
+    //             say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
+    //             break;
+    //         // 用户退出 更新用户列表
+    //         case 'logout':
+    //             //{"type":"logout","client_id":xxx,"time":"xxx"}
+    //             say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
+    //             delete client_list[data['from_client_id']];
+    //             flush_client_list();
+    //     }
+    // }
 
     // 提交对话
-    function onSubmit() {
-      var input = document.getElementById("textarea");
-    //   var to_client_id = $("#client_list option:selected").attr("value");
-      var to_client_id = 'all';
-      var to_client_name = $("#client_list option:selected").text();
-      ws.send('{"type":"say","to_client_id":"'+to_client_id+'","to_client_name":"'+to_client_name+'","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
-      input.value = "";
-      input.focus();
-    }
+    // function onSubmit() {
+    //   var input = document.getElementById("textarea");
+    // //   var to_client_id = $("#client_list option:selected").attr("value");
+    //   var to_client_id = 'all';
+    //   var to_client_name = $("#client_list option:selected").text();
+    //   ws.send('{"type":"say","to_client_id":"'+to_client_id+'","to_client_name":"'+to_client_name+'","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
+    //   input.value = "";
+    //   input.focus();
+    // }
 
     // 刷新用户列表框
-    function flush_client_list(){
-    	var userlist_window = $("#userlist");
-    	var client_list_slelect = $("#client_list");
-    	userlist_window.empty();
-    	client_list_slelect.empty();
-    	userlist_window.append('<h4>在线用户</h4><ul>');
-    	client_list_slelect.append('<option value="all" id="cli_all">所有人</option>');
-    	for(var p in client_list){
-            userlist_window.append('<li id="'+p+'">'+client_list[p]+'</li>');
-            if (p!=client_id) {
-                client_list_slelect.append('<option value="'+p+'">'+client_list[p]+'</option>');   
-            }
-        }
-    	$("#client_list").val(select_client_id);
-    	userlist_window.append('</ul>');
-    }
+    // function flush_client_list(){
+    // 	var userlist_window = $("#userlist");
+    // 	var client_list_slelect = $("#client_list");
+    // 	userlist_window.empty();
+    // 	client_list_slelect.empty();
+    // 	userlist_window.append('<h4>在线用户</h4><ul>');
+    // 	client_list_slelect.append('<option value="all" id="cli_all">所有人</option>');
+    // 	for(var p in client_list){
+    //         userlist_window.append('<li id="'+p+'">'+client_list[p]+'</li>');
+    //         if (p!=client_id) {
+    //             client_list_slelect.append('<option value="'+p+'">'+client_list[p]+'</option>');   
+    //         }
+    //     }
+    // 	$("#client_list").val(select_client_id);
+    // 	userlist_window.append('</ul>');
+    // }
 
     // 发言
-    function say(from_client_id, from_client_name, content, time){
-        //解析新浪微博图片
-        content = content.replace(/(http|https):\/\/[\w]+.sinaimg.cn[\S]+(jpg|png|gif)/gi, function(img){
-            return "<a target='_blank' href='"+img+"'>"+"<img src='"+img+"'>"+"</a>";}
-        );
+    // function say(from_client_id, from_client_name, content, time){
+    //     //解析新浪微博图片
+    //     content = content.replace(/(http|https):\/\/[\w]+.sinaimg.cn[\S]+(jpg|png|gif)/gi, function(img){
+    //         return "<a target='_blank' href='"+img+"'>"+"<img src='"+img+"'>"+"</a>";}
+    //     );
 
-        //解析url
-        content = content.replace(/(http|https):\/\/[\S]+/gi, function(url){
-            if(url.indexOf(".sinaimg.cn/") < 0)
-                return "<a target='_blank' href='"+url+"'>"+url+"</a>";
-            else
-                return url;
-        }
-        );
+    //     //解析url
+    //     content = content.replace(/(http|https):\/\/[\S]+/gi, function(url){
+    //         if(url.indexOf(".sinaimg.cn/") < 0)
+    //             return "<a target='_blank' href='"+url+"'>"+url+"</a>";
+    //         else
+    //             return url;
+    //     }
+    //     );
 
-    	// $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
-    }
+    // 	// $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+    // }
 
-    $(function(){
-    	select_client_id = 'all';
-	    $("#client_list").change(function(){
-	         select_client_id = $("#client_list option:selected").attr("value");
-	    });
-        $('.face').click(function(event){
-            $(this).sinaEmotion();
-            event.stopPropagation();
-        });
-    });
+    // $(function(){
+    // 	select_client_id = 'all';
+	//     $("#client_list").change(function(){
+	//          select_client_id = $("#client_list option:selected").attr("value");
+	//     });
+    //     $('.face').click(function(event){
+    //         $(this).sinaEmotion();
+    //         event.stopPropagation();
+    //     });
+    // });

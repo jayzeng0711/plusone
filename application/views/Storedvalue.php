@@ -1,8 +1,3 @@
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('.ham,.leftfunc').css('display','none')
-    })
-</script>
 <div class="balance_order_rightfunc" style="width: 100%;">
     <div class="balance_wrap">
         <div class="store_wrap_inner">

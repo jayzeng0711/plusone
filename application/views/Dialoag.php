@@ -15,194 +15,14 @@
             <!-- 極速約單 -->
             <div class="dialoag_3" v-show="dialoagswitch == 1">
                 <div class="dialoag_5">
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_1" @click="clikcperson(1)">
+                    <div class="dialoag_6 alldialoag" :id="'per_dialoag_'+id" @click="clikcperson(id)" v-for="(user,id) in client_list">
                         <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
+                            <img class="dialoag_8" :src="user.image" alt="" style="border-radius: 50%;">
                             <div id="avatar-wrap_div_status" class="dia_status_color"></div>
                         </div>
                         <div class="dialoag_9">
                             <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_2" @click="clikcperson(2)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師我正在尋找陪玩師我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_3" @click="clikcperson(3)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
-                                <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
-                            </div>
-                            <div class="dialoag_14">
-                                我正在尋找陪玩師
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dialoag_6 alldialoag" id="per_dialoag_4" @click="clikcperson(4)">
-                        <div class="dialoag_7">
-                            <img class="dialoag_8" src="/plusone88/assets/img/img-profile@2x.png" alt="">
-                            <div id="avatar-wrap_div_status" class="dia_status_color"></div>
-                        </div>
-                        <div class="dialoag_9">
-                            <div class="dialoag_10">
-                                <div class="dialoag_11">Sheena</div>
+                                <div class="dialoag_11">{{ user.name }}</div>
                                 <div class="dialoag_12"><img class="dialoag_13" src="/plusone88/assets/img/player-tag@2x.png" alt=""></div>
                             </div>
                             <div class="dialoag_14">
@@ -213,15 +33,15 @@
                 </div>
                 <div class="dialoag_15">
                     <div class="dialoag_16">
-                        <div class="dialoag_17">
+                        <!-- <div class="dialoag_17">
                             <div class="dialoag_18">kevin</div>
                             <div class="dialoag_19">1小時前</div>
-                        </div>
+                        </div> -->
                         <div class="dialoag_20">
                             <div class="dialoag_21">
-                                <div class="dialoag_22">
+                                <!-- <div class="dialoag_22">
                                     <img class="dialoag_23" src="/plusone88/assets/img/Group 1@2x.png" alt="">
-                                </div>
+                                </div> -->
                                 <div class="dialoag_24">
                                     <div class="dialoag_25">激鬥峽谷 單價不限 局*1 </div>
                                     <div class="dialoag_26">
@@ -515,13 +335,13 @@
                                 </div>
                             </div>
                         </div>
-                        <form onsubmit="onSubmit(); return false;">
+                        <form>
                             <div class="dialoag_39">
                                 <textarea class="dialoag_40" name="" id="textarea" cols="30" rows="5" placeholder="請輸入內容"></textarea>
                             </div>
                             <div class="dialoag_41">
                                 <div class="dialoag_42">按Enter鍵發送</div>
-                                <button type="submit" class="dialoag_43">發送</button>
+                                <button type="submit" class="dialoag_43" @click.stop="onSubmit">發送</button>
                             </div>
                         </form>
                     </div>

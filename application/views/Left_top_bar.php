@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="<?=base_url()?>plusone/dialoag">
+                <a href="<?=base_url()?>member/dialoag">
                     <div class="message">
                         <img width="23" style="height: 23px;vertical-align: middle" src="<?=base_url()?>plusone88/assets/img/icon-msg@2x.png">
                         <span class="messagenum">1</span>

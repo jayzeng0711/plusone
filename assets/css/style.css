@@ -241,7 +241,7 @@ a {
 }
 
 .banner{
-    height: 110px;
+    height: 180px;
 }
 
 /*carousel end*/
@@ -6860,7 +6860,7 @@ a {
         z-index: 2;
         position: absolute;
         left: 50%;
-        bottom: 50px;
+        bottom: 126px;
         transform: translateX(-50%);
         background: #fff;
         padding: 40px 20px;
@@ -7263,8 +7263,19 @@ a {
         height: 150px;
         right: -15px;
     }
+    .banner{
+        height: auto;
+    }
     .owl-carousel .owl-item img {
-        height: 90px;
+        height: auto;
+    }
+    .settle_img {
+        width: 100%;
+        object-fit: initial;
+        height: auto;
+    }
+    .settle_wrap{
+        background: #da92a1;
     }
 }
 
