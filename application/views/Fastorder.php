@@ -119,13 +119,13 @@
         </div>
     </div>
     <div class="logoutpop" v-show="deterconfirm == 1">
-        <form method="post" action="https://www.plusone88.com/member/dialoag" @submit.stop="confirmorder">
-            <input type="text" v-model="origameid" name="id" hidden>
+        <!-- <form method="post" action="https://www.plusone88.com/member/dialoag" @submit.stop=""> -->
+            <!-- <input type="text" v-model="origameid" name="id" hidden>
             <input type="text" v-model="origamerank" name="rank" hidden>
             <input type="text" v-model="sexNum" name="sex" hidden>
             <input type="text" v-model="origamepri" name="price" hidden>
             <input type="text" v-model="gametotal" name="gametotal" hidden>
-            <input type="text" v-model="orderNote" name="note" hidden>
+            <input type="text" v-model="orderNote" name="note" hidden> -->
             <div class="confrimfast_text">
                 請確認您的約單要求
             </div>
@@ -140,11 +140,11 @@
                 <div class="logoutpop_cancel" @click="cancelorder()">
                     取消
                 </div>
-                <button class="logoutpop_confirm">
+                <button class="logoutpop_confirm" @click="confirmorder">
                     確定
                 </button>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
     <div class="logoutmaskBg" v-show="selectmodel == 1"></div>
     <div class="logoutmaskBg" v-show="deterconfirm == 1"></div>

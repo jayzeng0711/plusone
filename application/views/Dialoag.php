@@ -33,23 +33,6 @@
                 </div>
                 <div class="dialoag_15">
                     <div class="dialoag_16">
-                        <!-- <div class="dialoag_17">
-                            <div class="dialoag_18">kevin</div>
-                            <div class="dialoag_19">1小時前</div>
-                        </div> -->
-                        <!-- <div class="dialoag_20">
-                            <div class="dialoag_21">
-                                <div class="dialoag_22">
-                                    <img class="dialoag_23" src="/plusone88/assets/img/Group 1@2x.png" alt="">
-                                </div>
-                                <div class="dialoag_24">
-                                    <div class="dialoag_25">激鬥峽谷 單價不限 局*1 </div>
-                                    <div class="dialoag_26">
-                                        約單要求：模式不限，牌位不限，女生 備註：希望聲音好聽
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="dialoag_33" style="height: 500px;">
                             <div class="dialoag_27" v-for="list in mutidialoag">
                                 <div style="display: flex;">
@@ -60,7 +43,7 @@
                                 </div>
                                 <div class="dialoag_32" style="margin-left: 45px;margin-top: -10px;">
                                     <div class="dialoag_29" v-html="list.content"></div>
-                                    <div class="dialoag_30">倒數計時 <span class="dialoag_31">11 : 27</span></div>
+                                    <div class="dialoag_30">倒數計時 <span class="dialoag_31">15 : 00</span></div>
                                 </div>
                             </div>
                         </div>

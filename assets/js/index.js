@@ -230,6 +230,7 @@ var vm = new Vue({
         this.getsingleskill();
         this.getmenus();
         this.getcountry();
+        this.connect();
 
         this.getAllSkill();
         this.NologingetAllSkill();
@@ -237,7 +238,7 @@ var vm = new Vue({
         this.getallcoin();
         this.getcoupons();
         this.getwithorder();
-        this.connect();
+        this.timeoutorder()
     },
     computed: {
 
@@ -360,6 +361,22 @@ var vm = new Vue({
                     vm.oriallgames = result;
                     vm.origameid = vm.oriallgames[0]['id']
                     vm.gametext = vm.oriallgames[0]['skill_name']
+                })
+        },
+        async timeoutorder() {
+            if(window.location.href != "https://www.plusone88.com/member/dialoag"){
+                return false;
+            }
+
+            return await $.get("https://www.plusone88.com/api/getsayinfo", {
+
+            })
+                .done(function (result) {
+                    result = JSON.parse(result)
+                    console.log(result)
+                    for(i=0;i<result.length;i++){
+                        vm.mutidialoag.push(result[i])
+                    }
                 })
         },
         async getsingleskill() {
@@ -929,16 +946,29 @@ var vm = new Vue({
         cancelorder() {
             this.deterconfirm = 0;
         },
-        confirmorder(e) {
+        confirmorder() {
             var to_client_id = 'all';
             if(this.orderNote == ""){
                 ws.send('{"type":"say","to_client_id":"'+to_client_id+'","content":"'+vm.gametext+' '+vm.pricetext+' '+"局 * "+vm.gametotal+' 約單要求: '+vm.ranktext+', '+vm.sex+'"}');
+                var content = `${vm.gametext} ${vm.pricetext} 局 * ${vm.gametotal} 約單要求: ${vm.ranktext}, ${vm.sex}`;
             }else{
                 ws.send('{"type":"say","to_client_id":"'+to_client_id+'","content":"'+vm.gametext+' '+vm.pricetext+' '+"局 * "+vm.gametotal+' 約單要求: '+vm.ranktext+', '+vm.sex+' '+"備註: "+vm.orderNote+'"}');
+                var content = `${vm.gametext} ${vm.pricetext} 局 * ${vm.gametotal} 約單要求: ${vm.ranktext}, ${vm.sex} 備註:${vm.orderNote}`;
             }
-            this.deterconfirm = 0;
-            e.preventDefault();
-            return false
+            
+            $.post("https://www.plusone88.com/api/sayinfo", {
+                "content": content,
+                "uid": vm.user.id,
+                "from_client_image": vm.user.image,
+                "from_client_name": vm.user.name,
+                "to_client_id": "all"
+                })
+            .done(function (res) {
+                var res = JSON.parse(res)
+                console.log(res)
+                this.deterconfirm = 0;
+                // window.location.href = "https://www.plusone88.com/member/dialoag";
+            })
         },
         myorderchange(num) {
             this.all_order = num;
@@ -2191,26 +2221,13 @@ var vm = new Vue({
                 case 'say':
                     console.log(data)
                     if(data.to_client_id == 'all'){
-                        $.post("https://www.plusone88.com/api/sayinfo", {
-                            "content": data['content'],
-                            "uid": vm.user.id,
-                            "from_client_id": data['from_client_id'],
-                            "from_client_image": vm.user.image,
-                            "from_client_name": data['from_client_name'],
-                            "time": data['time'],
-                            "to_client_id": "all"
-                         })
-                        .done(function (res) {
-                            var res = JSON.parse(res)
-                            var list = {
-                                "src": res.from_client_image,
-                                "content": data['content'],
-                                "name": data['from_client_name']
-                            };
-                            vm.mutidialoag.push(list)
-                        })
+                        var list = {
+                                        "src": data['from_client_image'],
+                                        "content": data['content'],
+                                        "name": data['from_client_name']
+                                    };
+                        vm.mutidialoag.push(list)
                     }
-                    
                     //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
                     // vm.say(data['from_client_id'], data['from_client_name'], data['from_client_image'], data['content'], data['time']);
                     break;
