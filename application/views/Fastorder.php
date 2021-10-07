@@ -119,7 +119,7 @@
         </div>
     </div>
     <div class="logoutpop" v-show="deterconfirm == 1">
-        <form method="post" action="https://www.plusone88.com/plusone/search" @submit="confirmorder">
+        <form method="post" action="https://www.plusone88.com/member/dialoag" @submit.stop="confirmorder">
             <input type="text" v-model="origameid" name="id" hidden>
             <input type="text" v-model="origamerank" name="rank" hidden>
             <input type="text" v-model="sexNum" name="sex" hidden>

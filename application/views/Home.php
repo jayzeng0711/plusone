@@ -27,18 +27,14 @@
     <div class="stepBox">
         <div class="infoCarousel owl-carousel owl-theme">
             <div class="banner">
-                <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
+                <a href="https://www.plusone88.com/plusone/newdetail/1001"  target="_blank" > <img src="https://images.plusone88.com/banner/banner02.jpg"> </a>
             </div>
             <div class="banner">
-                <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
+                <a href="https://www.plusone88.com/plusone/newdetail/1000"  target="_blank" > <img src="https://images.plusone88.com/banner/banner03.jpg"> </a>
             </div>
-            <div class="banner">
-                <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
-            </div>
-            <div class="banner">
-                <div><img src="<?=base_url()?>plusone88/assets/img/ad-img@2x.png"></div>
-            </div>
+
         </div>
+
     </div>
     <? if ($this->isLogin ==  false): ?>
         <div class="alotofskills">

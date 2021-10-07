@@ -5333,6 +5333,7 @@ a {
 .dialoag_13,
 .dialoag_23 {
     width: 100%;
+    border-radius: 50%;
 }
 
 .dialoag_9 {
@@ -5412,7 +5413,6 @@ a {
 }
 
 .dialoag_27 {
-    display: flex;
     max-width: 700px;
     margin-bottom: 20px;
 }
