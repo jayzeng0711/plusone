@@ -22,6 +22,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script type="text/javascript" src="<?=base_url()?>plusone88/assets/js/web_socket.js"></script>
     <script type="text/javascript" src="<?=base_url()?>plusone88/assets/js/swfobject.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js" integrity="sha512-7MUzENx3yOdqefYPoJoASx3omUka8w1QguEY+Yl2QDKwGAQIHqjfh4nGiEq5Hxx1WYR7NDGRxGaYVbLHLyhh4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>

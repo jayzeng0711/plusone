@@ -5417,6 +5417,12 @@ a {
     margin-bottom: 30px;
 }
 
+.dialoag_27steal{
+    max-width: 700px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
 .dialoag_28 {
     min-width: 45px;
     max-width: 45px;

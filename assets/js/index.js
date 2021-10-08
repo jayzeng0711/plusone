@@ -223,6 +223,40 @@ var vm = new Vue({
             donatemessage: "",
             client_list: {},
             mutidialoag:[],
+            privatechat:{
+                name: "kevin",
+                time: "1小時前",
+                dialoag:[
+                    {
+                        img:'/plusone88/assets/img/img-profile@2x.png',
+                        message: "你好請問有空嗎",
+                        time: "下午10:50",
+                        reply: 0
+                    },
+                    {
+                        img:'/plusone88/assets/img/img-profile@2x.png',
+                        message: "有喔",
+                        time: "下午10:51",
+                        reply: 1
+                    }, 
+                ],
+            },
+            privatlist:[
+                {
+                    uid: 1,
+                    img: "/plusone88/assets/img/img-profile@2x.png",
+                    name: "Sheena",
+                    tag: "/plusone88/assets/img/player-tag@2x.png",
+                    lastmessage: "您好",
+                },
+                {
+                    uid: 2,
+                    img: "/plusone88/assets/img/img-profile@2x.png",
+                    name: "Sheena",
+                    tag: "/plusone88/assets/img/player-tag@2x.png",
+                    lastmessage: "您dsvsdvds好",
+                },
+            ],
         };
     },
     created() {
@@ -239,6 +273,8 @@ var vm = new Vue({
         this.getcoupons();
         this.getwithorder();
         this.timeoutorder()
+        this.nowtime();
+        this.lasttime();
     },
     computed: {
 
@@ -373,9 +409,16 @@ var vm = new Vue({
             })
                 .done(function (result) {
                     result = JSON.parse(result)
-                    console.log(result)
                     for(i=0;i<result.length;i++){
-                        vm.mutidialoag.push(result[i])
+                        vm.mutidialoag.push(result[i]);
+                        var day1 = new Date(result[i]['time'].replace(/-/g, "/"));
+                        var day2 = new Date(vm.nowtime().replace(/-/g, "/"));
+                        var difference = day1.getTime()-day2.getTime();
+                        var minutes = Math.floor(difference / 1000 / 60) < 10 ? ("0" + Math.floor(difference / 1000 / 60)): Math.floor(difference / 1000 / 60);
+                        difference -= minutes * 1000 * 60;
+                        var seconds = Math.floor(difference / 1000) < 10 ? ("0" + Math.floor(difference / 1000)): Math.floor(difference / 1000);
+                        resultTime = minutes + " : " + seconds;
+                        vm.mutidialoag[i]['overtime'] = resultTime
                     }
                 })
         },
@@ -511,6 +554,70 @@ var vm = new Vue({
                     vm.report = result;
                     vm.order();
                 })
+        },
+        nowtime(){
+            var y = new Date().getFullYear();
+            var m = new Date().getMonth() < 10 ? ("0" + new Date().getMonth()) : new Date().getMonth();
+            m = parseInt(m)+1
+            var d = new Date().getDate() < 10 ? ("0" + new Date().getDate()) : new Date().getDate();
+            var h = new Date().getHours() < 10 ? ("0" + new Date().getHours()) : new Date().getHours();
+            var min = new Date().getMinutes() < 10 ? ("0" + new Date().getMinutes()) : new Date().getMinutes();
+            var s = new Date().getSeconds() < 10 ? ("0" + new Date().getSeconds()) : new Date().getSeconds();
+            var nowtime = y + '-' + +m + '-' + d + " " + h + ':' + min + ':' + s;
+            return nowtime;
+        },
+        lasttime(){
+            var last = function () {
+                for(i=0;i<vm.mutidialoag.length;i++){
+                    totalmin = parseInt(vm.mutidialoag[i]['overtime'].split(" : ")[0]) * 60;
+                    totalsec = parseInt(vm.mutidialoag[i]['overtime'].split(" : ")[1]);
+                    maxTime = totalmin + totalsec;
+                    maxTime--;
+                    var minutes = Math.floor(maxTime / 60);
+                    var seconds = maxTime % 60;
+                    seconds = vm.jia(seconds);
+                    minutes = vm.jiamin(minutes);
+                    mes = minutes + " : " + seconds;
+                    if (maxTime < 1) {
+                        Vue.set(vm.mutidialoag, i, {
+                            "uid": vm.mutidialoag[i]['uid'],
+                            "src": vm.mutidialoag[i]['src'],
+                            "content": vm.mutidialoag[i]['content'],
+                            "name": vm.mutidialoag[i]['name'],
+                            "time": vm.mutidialoag[i]['time'],
+                            "overtime": "00:00",
+                        })
+                    }else{
+                        Vue.set(vm.mutidialoag, i, {
+                            "uid": vm.mutidialoag[i]['uid'],
+                            "src": vm.mutidialoag[i]['src'],
+                            "content": vm.mutidialoag[i]['content'],
+                            "name": vm.mutidialoag[i]['name'],
+                            "time": vm.mutidialoag[i]['time'],
+                            "overtime": mes,
+                        })
+                    }
+                }
+            }
+
+            setInterval(function () {
+                last();
+            }, 1000);
+        },
+        /**
+         *  秒數低於10秒補0
+         */
+        jia: function (seconds) {
+            if (seconds < 10)
+                return "0" + seconds;
+            else
+                return seconds;
+        },
+        jiamin:function (minutes) {
+            if (minutes < 10)
+                return "0" + minutes;
+            else
+                return minutes;
         },
         openlogonpop() {
             this.loginpop = 1;
@@ -965,9 +1072,8 @@ var vm = new Vue({
                 })
             .done(function (res) {
                 var res = JSON.parse(res)
-                console.log(res)
                 this.deterconfirm = 0;
-                // window.location.href = "https://www.plusone88.com/member/dialoag";
+                window.location.href = "https://www.plusone88.com/member/dialoag";
             })
         },
         myorderchange(num) {
@@ -2042,10 +2148,11 @@ var vm = new Vue({
             this.clearallfilter();
             this.orderpopright = 0;
         },
-        clikcperson(id) {
+        clikcperson(id,uid) {
             $('.alldialoag').removeClass('dialoag_6_active');
             $(`#per_dialoag_${id}`).addClass('dialoag_6_active');
             this.bigprepop = 0;
+            vm.toggleswitch(2)
         },
         clikcdateperson(id) {
             $('.datealldialoag').removeClass('dialoag_6_active');
@@ -2195,7 +2302,7 @@ var vm = new Vue({
                     vm.user.name = result.fakename;
                     vm.user.image = result.picture;
                     vm.user.reward = result.point
-                    var login_data = '{"type":"login","client_img":"'+result.picture+'","client_name":"'+result.fakename+'","room_id":1}';
+                    var login_data = '{"type":"login","client_img":"'+result.picture+'","client_name":"'+result.fakename+'","room_id":1,"uid":"'+result.uid+'"}';
                     ws.send(login_data);
                 }
             })
@@ -2219,15 +2326,39 @@ var vm = new Vue({
                     break;
                 // 发言
                 case 'say':
-                    console.log(data)
                     if(data.to_client_id == 'all'){
+                        var d1 = new Date (),
+                            d2 = new Date ( d1 );
+                        d2.setMinutes ( d1.getMinutes() + 15 );
+                        var y = d2.getFullYear();
+                        var m = d2.getMonth() < 10 ? ("0" + d2.getMonth()) : d2.getMonth();
+                        m = parseInt(m)+1
+                        var d = d2.getDate() < 10 ? ("0" + d2.getDate()) : d2.getDate();
+                        var h = d2.getHours() < 10 ? ("0" + d2.getHours()) : d2.getHours();
+                        var min = d2.getMinutes() < 10 ? ("0" + d2.getMinutes()) : d2.getMinutes();
+                        var s = d2.getSeconds() < 10 ? ("0" + d2.getSeconds()) : d2.getSeconds();
+                        var time = y + '-' + m + '-' + d + " " + h + ':' + min + ':' + s;
+
+                        var day11 = new Date(time.replace(/-/g, "/"));
+                        var day22 = new Date(vm.nowtime().replace(/-/g, "/"));
+                        var webdifference = day11.getTime()-day22.getTime();
+                        var webminutes = Math.floor(webdifference / 1000 / 60) < 10 ? ("0" + Math.floor(webdifference / 1000 / 60)): Math.floor(webdifference / 1000 / 60);
+                        webdifference -= webminutes * 1000 * 60;
+                        var webseconds = Math.floor(webdifference / 1000) < 10 ? ("0" + Math.floor(webdifference / 1000)): Math.floor(webdifference / 1000);
+                        webresultTime = webminutes + " : " + webseconds;
+
                         var list = {
+                                        "uid": data['from_uid'],
                                         "src": data['from_client_image'],
                                         "content": data['content'],
-                                        "name": data['from_client_name']
+                                        "name": data['from_client_name'],
+                                        "time": time,
+                                        "overtime": webresultTime,
                                     };
                         vm.mutidialoag.push(list)
                     }
+                    
+
                     //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
                     // vm.say(data['from_client_id'], data['from_client_name'], data['from_client_image'], data['content'], data['time']);
                     break;
